@@ -32,9 +32,12 @@ class ZerocIce33 < Formula
     bdb46 = Formula.factory('berkeley-db46')
     mcpp = Formula.factory('mcpp')
 
-    system "cd cpp && make MCPP_HOME=#{prefix} DB_HOME=#{bdb46.prefix} OPTIMIZE=yes prefix=#{prefix} install"
+    system "cd cpp && make MCPP_HOME=#{mcpp.prefix} DB_HOME=#{bdb46.prefix} OPTIMIZE=yes prefix=#{prefix} install"
+
+    ENV["ICE_HOME"] = "#{prefix}"
     system "cd rb && make OPTIMIZE=yes prefix=#{prefix} install"
     system "cd py && make OPTIMIZE=yes prefix=#{prefix} install"
+
   end
 
   def caveats; <<-EOS.undent
