@@ -23,6 +23,12 @@ class ZerocIce33 < Formula
   depends_on 'berkeley-db46'
 
   def install
+
+    ohai "Creating symbolic link for slice"
+
+    share.mkpath
+    ln_s prefix+"slice", share
+
     bdb46 = Formula.factory('berkeley-db46')
     mcpp = Formula.factory('mcpp')
 
