@@ -35,8 +35,8 @@ class ZerocIce33 < Formula
     system "cd cpp && make MCPP_HOME=#{mcpp.prefix} DB_HOME=#{bdb46.prefix} OPTIMIZE=yes prefix=#{prefix} embedded_runpath_prefix=#{prefix} install"
 
     ENV["ICE_HOME"] = "#{prefix}"
-    system "cd rb && make OPTIMIZE=yes prefix=#{prefix} install"
-    system "cd py && make OPTIMIZE=yes prefix=#{prefix} install"
+    system "cd rb && make OPTIMIZE=yes prefix=#{prefix} embedded_runpath_prefix=#{prefix} install"
+    system "cd py && make OPTIMIZE=yes prefix=#{prefix} embedded_runpath_prefix=#{prefix} install"
 
   end
 
