@@ -32,7 +32,7 @@ class ZerocIce33 < Formula
     bdb46 = Formula.factory('berkeley-db46')
     mcpp = Formula.factory('mcpp')
 
-    system "cd cpp && make MCPP_HOME=#{mcpp.prefix} DB_HOME=#{bdb46.prefix} OPTIMIZE=yes prefix=#{prefix} install"
+    system "cd cpp && make MCPP_HOME=#{mcpp.prefix} DB_HOME=#{bdb46.prefix} OPTIMIZE=yes prefix=#{prefix} embedded_runpath_prefix=#{prefix} install"
 
     ENV["ICE_HOME"] = "#{prefix}"
     system "cd rb && make OPTIMIZE=yes prefix=#{prefix} install"
