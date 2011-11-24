@@ -3,16 +3,6 @@ require 'formula'
 class ZerocIce34 < Formula
   homepage 'https://github.com/joshmoore/zeroc-ice'
 
-  # FROM github:
-  # ------------
-  # url 'https://github.com/joshmoore/zeroc-ice/tarball/Ice-3.3.1'
-  # sha1 '1db95b5b168207b9d3fb8d03097440c5f5238f58'
-  # md5 '7d8fab84c67272cde9fa7d3529d27caf'
-  #
-  # def install:
-  #   system "mkdir cpp/lib cpp/bin"
-  #   ...
-
   url 'http://download.zeroc.com/Ice/3.4/Ice-3.4.2.tar.gz'
   md5 'e97672eb4a63c6b8dd202d0773e19dc7'
   sha1 '8c84d6e3b227f583d05e08251e07047e6c3a6b42'
