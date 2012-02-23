@@ -3,9 +3,9 @@ require 'formula'
 class ZerocIce34 < Formula
   homepage 'https://github.com/joshmoore/zeroc-ice'
 
-  url 'http://download.zeroc.com/Ice/3.4/Ice-3.4.2.tar.gz'
-  md5 'e97672eb4a63c6b8dd202d0773e19dc7'
-  sha1 '8c84d6e3b227f583d05e08251e07047e6c3a6b42'
+  url 'https://nodeload.github.com/joshmoore/zeroc-ice/tarball/v.3.4.2-clang'
+  md5 'a636a01b7708d1b2ede3017e614e143b'
+  sha1 '9d4a9875e376b2e72dfcf87e7cedb7952048d795'
 
   head 'git://github.com/joshmoore/zeroc-ice.git', :tag => 'Ice-3.4.2'
 
