@@ -3,9 +3,9 @@ require 'formula'
 class Omero43 < Formula
   homepage 'https://www.openmicroscopy.org'
 
-  url 'https://github.com/joshmoore/openmicroscopy/tarball/v.4.3.1'
-  md5 '630394a13bf6debcc7b93c58f02d1d52'
-  sha1 'dd3d9d1d748a5a43e59aba0669c0c163a624f884'
+  url 'https://github.com/joshmoore/openmicroscopy/tarball/v.4.3.4'
+  md5 'c5b32ba1452ae2e038c1fc9b5760c811'
+  sha1 '2cb765f6b2de3a208ea5df5847473bf27056e830'
 
   depends_on 'zeroc-ice33'
 
