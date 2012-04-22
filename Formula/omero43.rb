@@ -3,7 +3,7 @@ require 'formula'
 class Omero43 < Formula
   homepage 'https://www.openmicroscopy.org'
 
-  url 'https://github.com/joshmoore/openmicroscopy/tarball/v.4.3.4'
+  url 'https://github.com/openmicroscopy/openmicroscopy/tarball/v.4.3.4'
   md5 'c5b32ba1452ae2e038c1fc9b5760c811'
   sha1 '2cb765f6b2de3a208ea5df5847473bf27056e830'
 
