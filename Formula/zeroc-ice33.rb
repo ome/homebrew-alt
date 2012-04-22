@@ -10,7 +10,7 @@ class ZerocIce33 < Formula
 
   head 'git://github.com/joshmoore/zeroc-ice.git', :tag => 'Ice-3.3.1'
 
-  depends_on 'joshmoore/alt/mcpp'
+  depends_on 'openmicroscopy/alt/mcpp'
   depends_on 'berkeley-db46'
 
   def install
@@ -21,7 +21,7 @@ class ZerocIce33 < Formula
     ln_s prefix+"slice", share
 
     bdb46 = Formula.factory('berkeley-db46')
-    mcpp = Formula.factory('joshmoore/alt/mcpp')
+    mcpp = Formula.factory('openmicroscopy/alt/mcpp')
 
     system "cd cpp && make MCPP_HOME=#{mcpp.prefix} DB_HOME=#{bdb46.prefix} OPTIMIZE=yes prefix=#{prefix} embedded_runpath_prefix=#{prefix} install"
 
