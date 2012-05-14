@@ -10,8 +10,6 @@ class Omero < Formula
 
   depends_on 'zeroc-ice33'
 
-  keg_only "OMERO uses a single symlink for access"
-
   def options
     [
       ["--with-cpp", "Build OmeroCpp libraries."]
