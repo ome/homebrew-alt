@@ -40,4 +40,14 @@ class Omero < Formula
     export PYTHONPATH=#{prefix}/lib/python:$PYTHONPATH
     EOS
   end
+  def test
+    mktemp do
+      (Pathname.pwd/'test.py').write <<-EOS.undent
+        #!/usr/bin/env python
+        import Ice
+        EOS
+
+      system "python", "test.py"
+    end
+  end
 end
