@@ -35,4 +35,9 @@ class Omero < Formula
     ln_s zeroc.prefix+"python", icepath
   end
 
+  def caveats; <<-EOS.undent
+    For non-homebrew Python, you need to amend your PYTHONPATH like so:
+    export PYTHONPATH=#{prefix}/lib/python:$PYTHONPATH
+    EOS
+  end
 end
