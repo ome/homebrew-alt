@@ -24,6 +24,15 @@ class Omero < Formula
         args << 'build-default'
     end
     system *args
+    ice_link
+  end
+
+  def ice_link
+    ohai "Linking zeroc libaries"
+    icepath = lib+"python"+"zeroc-ice33"
+
+    zeroc = Formula.factory('zeroc-ice33')
+    ln_s zeroc.prefix+"python", icepath
   end
 
 end
