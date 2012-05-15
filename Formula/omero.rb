@@ -37,7 +37,7 @@ class Omero < Formula
 
   def caveats; <<-EOS.undent
     For non-homebrew Python, you need to amend your PYTHONPATH like so:
-    export PYTHONPATH=#{prefix}/lib/python:$PYTHONPATH
+    export PYTHONPATH=#{lib}/python:$PYTHONPATH
     EOS
   end
   def test
