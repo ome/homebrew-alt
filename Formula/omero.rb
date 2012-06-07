@@ -29,17 +29,22 @@ class Omero < Formula
 
   def ice_link
     ohai "Linking zeroc libaries"
-    icepath = lib+"python"+"zeroc-ice33"
+    python = lib+"python"
 
     zeroc = Formula.factory('zeroc-ice33')
-    ln_s zeroc.prefix+"python", icepath
+    zp = zeroc.prefix+"python"
+    zp.cd { Dir["*"].each {|p| ln_sf zp + p, python + File.basename(p) }}
+
   end
 
   def caveats; <<-EOS.undent
-    For non-homebrew Python, you need to amend your PYTHONPATH like so:
+
+    For non-homebrew Python, you need to set your PYTHONPATH:
     export PYTHONPATH=#{lib}/python:$PYTHONPATH
+
     EOS
   end
+
   def test
     mktemp do
       (Pathname.pwd/'test.py').write <<-EOS.undent
