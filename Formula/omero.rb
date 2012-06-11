@@ -8,6 +8,7 @@ class Omero < Formula
   sha1 '2cb765f6b2de3a208ea5df5847473bf27056e830'
   version '4.3.4'
 
+  depends_on 'mplayer'
   depends_on 'zeroc-ice33'
 
   def options
