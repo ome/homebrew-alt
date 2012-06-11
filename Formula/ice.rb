@@ -7,7 +7,7 @@ class Ice < Formula
   homepage 'http://www.zeroc.com'
 
   depends_on 'berkeley-db'
-  depends_on 'openmicroscopy/alt/mcpp'
+  depends_on 'mcpp'
   # other dependencies listed for Ice are for additional utilities not compiled
 
   def patches
