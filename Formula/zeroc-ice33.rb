@@ -8,7 +8,7 @@ class ZerocIce33 < Formula
   sha1 '9055faf76ec7657e05036b7740d60bdc38e04f4a'
 
 
-  head 'git://github.com/joshmoore/zeroc-ice.git', :tag => 'Ice-3.3.1'
+  head 'http://github.com/joshmoore/zeroc-ice.git', :tag => 'Ice-3.3.1'
 
   depends_on 'mcpp'
   depends_on 'berkeley-db46'
