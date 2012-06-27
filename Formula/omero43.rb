@@ -1,10 +1,12 @@
 require 'formula'
 
-class Omero < Formula
+class Omero43 < Formula
   homepage 'https://www.openmicroscopy.org'
 
-  url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.0-RC1'  
-  version '4.4.0-RC1'
+  url 'https://github.com/openmicroscopy/openmicroscopy/tarball/v.4.3.4'
+  md5 'c5b32ba1452ae2e038c1fc9b5760c811'
+  sha1 '2cb765f6b2de3a208ea5df5847473bf27056e830'
+  version '4.3.4'
 
   depends_on 'mplayer'
   depends_on 'zeroc-ice33'
@@ -16,10 +18,7 @@ class Omero < Formula
   end
 
   def install
-    # Create config file to specify dist.dir (see #9203)
-    (Pathname.pwd/"etc/local.properties").write config_file
-    
-    args = ["./build.py", "-Dice.home=#{HOMEBREW_PREFIX}"]
+    args = ["./build.py", "-Dice.home=#{HOMEBREW_PREFIX}", "-Ddist.dir=#{prefix}"]
     if ARGV.include? '--with-cpp'
         args << 'build-all'
     else
@@ -27,17 +26,6 @@ class Omero < Formula
     end
     system *args
     ice_link
-    
-    # Remove .bat files from bin directory
-    Dir[prefix/"bin/*.bat"].each do |file|
-      rm file
-    end
-  end
-  
-  def config_file
-    <<-EOF.undent
-      dist.dir=#{prefix}
-    EOF
   end
 
   def ice_link
