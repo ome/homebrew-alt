@@ -3,10 +3,8 @@ require 'formula'
 class Omero < Formula
   homepage 'https://www.openmicroscopy.org'
 
-  url 'https://github.com/openmicroscopy/openmicroscopy/tarball/v.4.3.4'
-  md5 'c5b32ba1452ae2e038c1fc9b5760c811'
-  sha1 '2cb765f6b2de3a208ea5df5847473bf27056e830'
-  version '4.3.4'
+  url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.0-RC1'  
+  version '4.4.0-RC1'
 
   depends_on 'mplayer'
   depends_on 'zeroc-ice33'
@@ -18,7 +16,10 @@ class Omero < Formula
   end
 
   def install
-    args = ["./build.py", "-Dice.home=#{HOMEBREW_PREFIX}", "-Ddist.dir=#{prefix}"]
+    # Create config file to specify dist.dir (see #9203)
+    (Pathname.pwd/"etc/local.properties").write config_file
+    
+    args = ["./build.py", "-Dice.home=#{HOMEBREW_PREFIX}"]
     if ARGV.include? '--with-cpp'
         args << 'build-all'
     else
@@ -26,6 +27,12 @@ class Omero < Formula
     end
     system *args
     ice_link
+  end
+  
+  def config_file
+    <<-EOF.undent
+      dist.dir=#{prefix}
+    EOF
   end
 
   def ice_link
