@@ -1,6 +1,6 @@
 require 'formula'
 
-class Omero < Formula
+class Omero43 < Formula
   homepage 'https://www.openmicroscopy.org'
 
   url 'https://github.com/openmicroscopy/openmicroscopy/tarball/v.4.3.4'
