@@ -40,6 +40,13 @@ class Omero < Formula
     EOF
   end
 
+  def patches
+    # build generates a version number with 'git describe' command
+    # but Homebrew build runs in temp copy created via git checkout-index,
+    # so 'git describe' does not work.
+    DATA
+  end
+
   def ice_link
     ohai "Linking zeroc libaries"
     python = lib+"python"
@@ -69,3 +76,17 @@ class Omero < Formula
     end
   end
 end
+
+__END__
+diff --git a/build.xml b/build.xml
+index a00ac93..9bd4b05 100644
+--- a/build.xml
++++ b/build.xml
+@@ -906,7 +906,7 @@ omero.version=${omero.version}
+                 <echo>${version.describe.clean}-ice${versions.ice_lib}</echo>
+             </try>
+             <catch>
+-                <echo>UNKNOWN-ice${versions.ice_lib}</echo>
++                <echo>4.4.0-RC1-ice${versions.ice_lib}</echo>
+             </catch>
+         </trycatch>
