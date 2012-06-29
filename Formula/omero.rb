@@ -28,10 +28,8 @@ class Omero < Formula
     system *args
     ice_link
 
-    # Remove .bat files from bin directory
-    Dir[prefix/"bin/*.bat"].each do |file|
-      rm file
-    end
+    # Remove Windows files from bin directory
+    rm Dir[prefix/"bin/*.bat"]
   end
 
   def config_file

@@ -26,6 +26,9 @@ class Omero43 < Formula
     end
     system *args
     ice_link
+
+    # Remove Windows files from bin directory
+    rm Dir[prefix/"bin/*.bat"]
   end
 
   def ice_link
