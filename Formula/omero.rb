@@ -7,7 +7,6 @@ class Omero < Formula
   version '4.4.0'
 
   depends_on 'mplayer'
-  depends_on 'zeroc-ice33'
 
   def options
     [
