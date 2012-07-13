@@ -12,7 +12,8 @@ class Ice < Formula
 
   def patches
     # Patch for Ice-3.4.2 to work with Berkely DB 5.X rather than 4.X
-    "https://raw.github.com/gist/1619052/5be2a4bed2d4f1cf41ce9b95141941a252adaaa2/Ice-3.4.2-db5.patch"
+    # Patch to solve the upCast problem in current (3.4.2) upstream
+    { :p0 => "https://raw.github.com/romainbossart/Hello-World/master/ice_for_clang_2012-03-05.patch", :p1 => [DATA, "https://trac.macports.org/export/94734/trunk/dports/devel/ice-cpp/files/patch-ice.cpp.config.Make.rules.Darwin.diff"] }
   end
 
   def site_package_dir
@@ -35,6 +36,7 @@ class Ice < Formula
   def install
     ENV.O2
     inreplace "cpp/config/Make.rules" do |s|
+      s.gsub! "#OPTIMIZE", "OPTIMIZE"
       s.gsub! "/opt/Ice-$(VERSION)", prefix
       s.gsub! "/opt/Ice-$(VERSION_MAJOR).$(VERSION_MINOR)", prefix
     end
@@ -86,3 +88,21 @@ class Ice < Formula
 
   end
 end
+
+__END__
+--- ./cpp/src/Freeze/MapI.cpp
++++ ./cpp/src/Freeze/MapI.cpp
+@@ -1487,10 +1487,10 @@ Freeze::MapHelperI::size() const
+
+     try
+     {
+-#if DB_VERSION_MAJOR != 4
+-#error Freeze requires DB 4.x
++#if DB_VERSION_MAJOR < 4
++#error Freeze requires DB 4.x or greater
+ #endif
+-#if DB_VERSION_MINOR < 3
++#if DB_VERSION_MAJOR == 4 && DB_VERSION_MINOR < 3
+         _db->stat(&s, 0);
+ #else
+         _db->stat(_connection->dbTxn(), &s, 0);

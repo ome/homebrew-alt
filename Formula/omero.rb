@@ -3,8 +3,8 @@ require 'formula'
 class Omero < Formula
   homepage 'https://www.openmicroscopy.org'
 
-  url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.0-RC2'
-  version '4.4.0-RC2'
+  url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.0'
+  version '4.4.0'
 
   depends_on 'mplayer'
   depends_on 'zeroc-ice33'
