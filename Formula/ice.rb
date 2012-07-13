@@ -1,18 +1,24 @@
 require 'formula'
 
 class Ice < Formula
-
+  homepage 'http://www.zeroc.com'
   url 'http://www.zeroc.com/download/Ice/3.4/Ice-3.4.2.tar.gz'
   md5 'e97672eb4a63c6b8dd202d0773e19dc7'
-  homepage 'http://www.zeroc.com'
 
   depends_on 'berkeley-db'
   depends_on 'mcpp'
   # other dependencies listed for Ice are for additional utilities not compiled
 
+  # * compile against Berkely DB 5.X
+  # * use our selected compiler
+  # * solve the upCast problem in current (3.4.2) upstream
   def patches
-    # Patch for Ice-3.4.2 to work with Berkely DB 5.X rather than 4.X
-    "https://raw.github.com/gist/1619052/5be2a4bed2d4f1cf41ce9b95141941a252adaaa2/Ice-3.4.2-db5.patch"
+    { :p0 => "https://raw.github.com/romainbossart/Hello-World/master/ice_for_clang_2012-03-05.patch", 
+      :p1 => [
+        "https://trac.macports.org/export/94734/trunk/dports/devel/ice-cpp/files/patch-ice.cpp.config.Make.rules.Darwin.diff",
+        DATA
+        ] 
+    }
   end
 
   def site_package_dir
@@ -60,9 +66,6 @@ class Ice < Formula
     if ARGV.include? '--java'
       Dir.chdir "java" do
         system "ant ice-jar"
-        Dir.chdir "lib" do
-          lib.install ['Ice.jar', 'ant-ice.jar']
-        end
       end
     end
 
@@ -86,3 +89,21 @@ class Ice < Formula
 
   end
 end
+
+__END__
+--- ./cpp/src/Freeze/MapI.cpp   
++++ ./cpp/src/Freeze/MapI.cpp                                      
+@@ -1487,10 +1487,10 @@ Freeze::MapHelperI::size() const
+
+     try
+     {
+-#if DB_VERSION_MAJOR != 4
+-#error Freeze requires DB 4.x
++#if DB_VERSION_MAJOR < 4
++#error Freeze requires DB 4.x or greater
+ #endif
+-#if DB_VERSION_MINOR < 3
++#if DB_VERSION_MAJOR == 4 && DB_VERSION_MINOR < 3
+         _db->stat(&s, 0);
+ #else
+         _db->stat(_connection->dbTxn(), &s, 0);
