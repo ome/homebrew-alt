@@ -1,19 +1,24 @@
 require 'formula'
 
 class Ice < Formula
-
+  homepage 'http://www.zeroc.com'
   url 'http://www.zeroc.com/download/Ice/3.4/Ice-3.4.2.tar.gz'
   md5 'e97672eb4a63c6b8dd202d0773e19dc7'
-  homepage 'http://www.zeroc.com'
 
   depends_on 'berkeley-db'
   depends_on 'mcpp'
   # other dependencies listed for Ice are for additional utilities not compiled
 
+  # * compile against Berkely DB 5.X
+  # * use our selected compiler
+  # * solve the upCast problem in current (3.4.2) upstream
   def patches
-    # Patch for Ice-3.4.2 to work with Berkely DB 5.X rather than 4.X
-    # Patch to solve the upCast problem in current (3.4.2) upstream
-    { :p0 => "https://raw.github.com/romainbossart/Hello-World/master/ice_for_clang_2012-03-05.patch", :p1 => [DATA, "https://trac.macports.org/export/94734/trunk/dports/devel/ice-cpp/files/patch-ice.cpp.config.Make.rules.Darwin.diff"] }
+    { :p0 => "https://raw.github.com/romainbossart/Hello-World/master/ice_for_clang_2012-03-05.patch", 
+      :p1 => [
+        "https://trac.macports.org/export/94734/trunk/dports/devel/ice-cpp/files/patch-ice.cpp.config.Make.rules.Darwin.diff",
+        DATA
+        ] 
+    }
   end
 
   def site_package_dir
@@ -36,7 +41,6 @@ class Ice < Formula
   def install
     ENV.O2
     inreplace "cpp/config/Make.rules" do |s|
-      s.gsub! "#OPTIMIZE", "OPTIMIZE"
       s.gsub! "/opt/Ice-$(VERSION)", prefix
       s.gsub! "/opt/Ice-$(VERSION_MAJOR).$(VERSION_MINOR)", prefix
     end
@@ -62,9 +66,6 @@ class Ice < Formula
     if ARGV.include? '--java'
       Dir.chdir "java" do
         system "ant ice-jar"
-        Dir.chdir "lib" do
-          lib.install ['Ice.jar', 'ant-ice.jar']
-        end
       end
     end
 
@@ -90,8 +91,8 @@ class Ice < Formula
 end
 
 __END__
---- ./cpp/src/Freeze/MapI.cpp
-+++ ./cpp/src/Freeze/MapI.cpp
+--- ./cpp/src/Freeze/MapI.cpp   
++++ ./cpp/src/Freeze/MapI.cpp                                      
 @@ -1487,10 +1487,10 @@ Freeze::MapHelperI::size() const
 
      try
