@@ -84,6 +84,6 @@ index a00ac93..9bd4b05 100644
              </try>
              <catch>
 -                <echo>UNKNOWN-ice${versions.ice_lib}</echo>
-+                <echo>4.4.0-RC2-ice${versions.ice_lib}</echo>
++                <echo>4.4.0-ice${versions.ice_lib}</echo>
              </catch>
          </trycatch>
