@@ -3,8 +3,8 @@ require 'formula'
 class Omero < Formula
   homepage 'https://www.openmicroscopy.org'
 
-  url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.0'
-  version '4.4.0'
+  url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.1'
+  version '4.4.1'
 
   depends_on 'mplayer'
 
@@ -84,6 +84,6 @@ index a00ac93..9bd4b05 100644
              </try>
              <catch>
 -                <echo>UNKNOWN-ice${versions.ice_lib}</echo>
-+                <echo>4.4.0-ice${versions.ice_lib}</echo>
++                <echo>4.4.1-ice${versions.ice_lib}</echo>
              </catch>
          </trycatch>
