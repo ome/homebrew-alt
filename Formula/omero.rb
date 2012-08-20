@@ -3,6 +3,7 @@ require 'formula'
 class Omero < Formula
   homepage 'https://www.openmicroscopy.org'
 
+  head 'https://github.com/openmicroscopy/openmicroscopy.git', :branch => 'develop'
   url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.1'
   version '4.4.1'
 
