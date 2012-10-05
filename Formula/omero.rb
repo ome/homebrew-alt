@@ -7,7 +7,12 @@ class Omero < Formula
   url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.1'
   version '4.4.1'
 
-  depends_on 'mplayer'
+  depends_on 'pkg-config'
+  depends_on 'hdf5'
+  depends_on 'libjpeg'
+  depends_on 'gfortran'
+  depends_on 'zeroc-ice33'
+
 
   def options
     [
