@@ -4,10 +4,15 @@ class Omero < Formula
   homepage 'https://www.openmicroscopy.org'
 
   head 'https://github.com/openmicroscopy/openmicroscopy.git', :branch => 'develop'
-  url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.1'
-  version '4.4.1'
+  url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.4'
+  version '4.4.4'
 
-  depends_on 'mplayer'
+  depends_on 'pkg-config'
+  depends_on 'hdf5'
+  depends_on 'libjpeg'
+  depends_on 'gfortran'
+  depends_on 'zeroc-ice33'
+
 
   def options
     [
@@ -77,14 +82,15 @@ end
 
 __END__
 diff --git a/build.xml b/build.xml
-index a00ac93..9bd4b05 100644
+index d9a57ec..6686c42 100644
 --- a/build.xml
 +++ b/build.xml
-@@ -906,7 +906,7 @@ omero.version=${omero.version}
-                 <echo>${version.describe.clean}-ice${versions.ice_lib}</echo>
+@@ -925,7 +925,7 @@ omero.version=${omero.version}
+                 <propertyregex property="version.describe" input="${fullversion}" regexp="@{regexp}" select="@{select}"/>
              </try>
              <catch>
--                <echo>UNKNOWN-ice${versions.ice_lib}</echo>
-+                <echo>4.4.1-ice${versions.ice_lib}</echo>
+-                <echo>UNKNOWN</echo>
++                <echo>4.4.4</echo>
              </catch>
          </trycatch>
+         </sequential>
