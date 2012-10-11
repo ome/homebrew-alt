@@ -9,7 +9,7 @@ class Omero < Formula
 
   depends_on 'pkg-config'
   depends_on 'hdf5'
-  depends_on 'libjpeg'
+  depends_on 'jpeg'
   depends_on 'gfortran'
   depends_on 'zeroc-ice33'
 
