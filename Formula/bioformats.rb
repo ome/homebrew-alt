@@ -7,16 +7,12 @@ class Bioformats < Formula
   url 'https://github.com/openmicroscopy/bioformats.git', :tag => 'v4.4.4'
   version '4.4.4'
 
-  def options
-    [
-      ["--without-ome-tools", "Do not build OME Tools."]
-    ]
-  end
+  option 'without-ome-tools', 'Do not build OME Tools.'
   
   def install
     # Build libraries
     args = ["ant", "clean" ,"tools", "utils"]
-    if not ARGV.include? '--without-ome-tools'
+    if not build.include? 'without-ome-tools'
         args << 'tools-ome'
     end
     system *args

@@ -7,25 +7,20 @@ class Omero < Formula
   url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.4'
   version '4.4.4'
 
-  depends_on 'pkg-config'
+  option 'with-cpp', 'Build OmeroCpp libraries.'
+
+  depends_on 'pkg-config' => :build
   depends_on 'hdf5'
   depends_on 'jpeg'
   depends_on 'gfortran'
   depends_on 'zeroc-ice33'
-
-
-  def options
-    [
-      ["--with-cpp", "Build OmeroCpp libraries."]
-    ]
-  end
 
   def install
     # Create config file to specify dist.dir (see #9203)
     (Pathname.pwd/"etc/local.properties").write config_file
 
     args = ["./build.py", "-Dice.home=#{HOMEBREW_PREFIX}"]
-    if ARGV.include? '--with-cpp'
+    if build.include? 'with-cpp'
         args << 'build-all'
     else
         args << 'build-default'
