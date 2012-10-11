@@ -8,7 +8,7 @@ class Bioformats < Formula
   version '4.4.4'
 
   option 'without-ome-tools', 'Do not build OME Tools.'
-  
+
   def install
     # Build libraries
     args = ["ant", "clean" ,"tools", "utils"]
@@ -22,11 +22,11 @@ class Bioformats < Formula
 
     # Copy artifacts
     bin.install Dir["artifacts/loci_tools.jar"]
-    if not ARGV.include? '--without-ome-tools'
+    if not build.include? 'without-ome-tools'
       bin.install Dir["artifacts/ome_tools.jar"]
       bin.install Dir["artifacts/ome-io.jar"]
     end
-  
+
     # Copy command line-tools
     bin.install Dir["tools/*"]
   end
