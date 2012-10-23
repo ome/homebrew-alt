@@ -3,7 +3,7 @@ require 'formula'
 class Ice < Formula
 
   url 'http://www.zeroc.com/download/Ice/3.4/Ice-3.4.2.tar.gz'
-  md5 'e97672eb4a63c6b8dd202d0773e19dc7'
+  sha1 '8c84d6e3b227f583d05e08251e07047e6c3a6b42'
   homepage 'http://www.zeroc.com'
 
   depends_on 'berkeley-db'
@@ -24,14 +24,10 @@ class Ice < Formula
     "python" + `python -c 'import sys;print(sys.version[:3])'`.strip
   end
 
-  def options
-    [
-      ['--doc', 'Install documentation'],
-      ['--demo', 'Build demos'],
-      ['--java', 'Build java library'],
-      ['--python', 'Build python library']
-    ]
-  end
+  option 'doc', 'Install documentation'
+  option 'demo', 'Build demos'
+  option 'java', 'Build Java library'
+  option 'python', 'Build Python library'
 
   def install
     ENV.O2
@@ -42,8 +38,8 @@ class Ice < Formula
 
     # what want we build?
     wb = 'config src include'
-    wb += ' doc' if ARGV.include? '--doc'
-    wb += ' demo' if ARGV.include? '--demo'
+    wb += ' doc' if build.include? 'doc'
+    wb += ' demo' if build.include? 'demo'
 
     inreplace "cpp/Makefile" do |s|
       s.change_make_var! "SUBDIRS", wb
@@ -58,7 +54,7 @@ class Ice < Formula
       system "make install"
     end
 
-    if ARGV.include? '--java'
+    if build.include? 'java'
       Dir.chdir "java" do
         system "ant ice-jar"
         Dir.chdir "lib" do
@@ -67,7 +63,7 @@ class Ice < Formula
       end
     end
 
-    if ARGV.include? '--python'
+    if build.include? 'python'
 
       inreplace "py/config/Make.rules" do |s|
         s.gsub! "/opt/Ice-$(VERSION)", prefix
