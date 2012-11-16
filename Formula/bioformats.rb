@@ -1,11 +1,11 @@
 require 'formula'
 
 class Bioformats < Formula
-  homepage 'https://www.openmicroscopy.org'
+  homepage 'http://www.openmicroscopy.org/site/products/bio-formats'
 
-  head 'https://github.com/openmicroscopy/bioformats.git', :branch => 'develop'
-  url 'https://github.com/openmicroscopy/bioformats.git', :tag => 'v4.4.4'
-  version '4.4.4'
+  head 'https://github.com/openmicroscopy/bioformats.git', :branch => 'dev_4_4'
+  url 'https://github.com/openmicroscopy/bioformats.git', :tag => 'v4.4.5'
+  version '4.4.5'
 
   def options
     [
