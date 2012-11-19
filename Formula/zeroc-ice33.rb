@@ -3,12 +3,10 @@ require 'formula'
 class ZerocIce33 < Formula
   homepage 'https://github.com/joshmoore/zeroc-ice'
 
-  url 'https://nodeload.github.com/joshmoore/zeroc-ice/tarball/v.3.3.1-clang'
-  md5 '2ea5e68cbcf91121c0c196f6096aff9a'
-  sha1 '9055faf76ec7657e05036b7740d60bdc38e04f4a'
+  url 'https://github.com/joshmoore/zeroc-ice/archive/v.3.3.1-clang.tar.gz'
+  sha1 'd6bac03c32a27fe1414c519d3e6e08a2156232b6'
 
-
-  head 'http://github.com/joshmoore/zeroc-ice.git', :tag => 'Ice-3.3.1'
+  head 'http://github.com/joshmoore/zeroc-ice.git', :branch => 'Ice-3.3.1'
 
   depends_on 'mcpp'
   depends_on 'berkeley-db46'
