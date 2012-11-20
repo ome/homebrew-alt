@@ -1,11 +1,11 @@
 require 'formula'
 
 class Omero < Formula
-  homepage 'https://www.openmicroscopy.org'
+  homepage 'http://www.openmicroscopy.org/site/products/omero'
 
-  head 'https://github.com/openmicroscopy/openmicroscopy.git', :branch => 'develop'
-  url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.4'
-  version '4.4.4'
+  head 'https://github.com/openmicroscopy/openmicroscopy.git', :branch => 'dev_4_4'
+  url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.5'
+  version '4.4.5'
 
   depends_on 'pkg-config'
   depends_on 'hdf5'
