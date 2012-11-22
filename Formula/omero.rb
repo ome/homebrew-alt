@@ -85,7 +85,7 @@ index d9a57ec..6686c42 100644
              </try>
              <catch>
 -                <echo>UNKNOWN</echo>
-+                <echo>4.4.4</echo>
++                <echo>4.4.5</echo>
              </catch>
          </trycatch>
          </sequential>
