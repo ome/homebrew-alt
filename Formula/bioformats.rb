@@ -9,6 +9,13 @@ class Bioformats < Formula
 
   option 'without-ome-tools', 'Do not build OME Tools.'
 
+  def patches
+    # build generates a version number with 'git show' command
+    # but Homebrew build runs in temp copy created via git checkout-index,
+    # so 'git show' does not work.
+    DATA
+  end
+
   def install
     # Build libraries
     args = ["ant", "clean" ,"tools", "utils"]
@@ -31,3 +38,17 @@ class Bioformats < Formula
     bin.install Dir["tools/*"]
   end
 end
+
+__END__
+diff --git a/ant/common.xml b/ant/common.xml
+index d238aa6..e2ef921 100644
+--- a/ant/common.xml
++++ b/ant/common.xml
+@@ -49,6 +49,9 @@ Type "ant -p" for a list of targets.
+         <propertyregex property="vcs.date"
+           input="${git.info}" regexp="Date: +([^\n]*)" select="\1"/>
+       </then>
++      <else>
++        <property name="vcs.revision" value="03770c0"></property>
++         </else>
+     </if>
