@@ -9,11 +9,17 @@ class Omero < Formula
 
   option 'with-cpp', 'Build OmeroCpp libraries.'
 
+  depends_on 'ccache' => :recommended
   depends_on 'pkg-config' => :build
   depends_on 'hdf5'
   depends_on 'jpeg'
   depends_on 'gfortran'
-  depends_on 'zeroc-ice33'
+  if build.with? 'with-ice34'
+    depends_on 'ome/alt/ice'
+  else
+    depends_on 'ome/alt/zeroc-ice33'
+  end
+  depends_on 'mplayer' => :recommended
 
   def install
     # Create config file to specify dist.dir (see #9203)
