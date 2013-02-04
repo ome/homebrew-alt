@@ -8,12 +8,16 @@ class Omero < Formula
   version '4.4.5'
 
   option 'with-cpp', 'Build OmeroCpp libraries.'
+  option 'with-ice34', 'Use Ice 3.4.'
 
+  depends_on 'ccache' => :recommended
   depends_on 'pkg-config' => :build
   depends_on 'hdf5'
   depends_on 'jpeg'
   depends_on 'gfortran'
-  depends_on 'zeroc-ice33'
+  depends_on 'ome/alt/ice' if build.with? 'with-ice34'
+  depends_on 'zeroc-ice33' unless build.with? 'with-ice34'
+  depends_on 'mplayer' => :recommended
 
   def install
     # Create config file to specify dist.dir (see #9203)
@@ -49,7 +53,11 @@ class Omero < Formula
     ohai "Linking zeroc libaries"
     python = lib+"python"
 
-    zeroc = Formula.factory('zeroc-ice33')
+    if build.with? 'with-ice34'
+      zeroc = Formula.factory('ome/alt/ice')
+    else
+      zeroc = Formula.factory('zeroc-ice33')
+    end
     zp = zeroc.prefix+"python"
     zp.cd { Dir["*"].each {|p| ln_sf zp + p, python + File.basename(p) }}
 
