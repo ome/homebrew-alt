@@ -9,7 +9,7 @@ class ZerocIce33 < Formula
   head 'http://github.com/joshmoore/zeroc-ice.git', :branch => 'Ice-3.3.1'
 
   depends_on 'mcpp'
-  depends_on 'berkeley-db46'
+  depends_on 'berkeley-db46' => '--without-java'
 
   def install
 

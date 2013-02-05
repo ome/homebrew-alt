@@ -11,15 +11,11 @@ class Omero43 < Formula
   depends_on 'mplayer'
   depends_on 'zeroc-ice33'
 
-  def options
-    [
-      ["--with-cpp", "Build OmeroCpp libraries."]
-    ]
-  end
+  option "with-cpp", "Build OmeroCpp libraries."
 
   def install
     args = ["./build.py", "-Dice.home=#{HOMEBREW_PREFIX}", "-Ddist.dir=#{prefix}"]
-    if ARGV.include? '--with-cpp'
+    if build.include? 'with-cpp'
         args << 'build-all'
     else
         args << 'build-default'

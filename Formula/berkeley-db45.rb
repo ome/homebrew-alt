@@ -3,13 +3,11 @@ require 'formula'
 class BerkeleyDb45 < Formula
   url 'http://download.oracle.com/berkeley-db/db-4.5.20.tar.gz'
   homepage 'http://www.oracle.com/technology/products/berkeley-db/index.html'
-  md5 'b0f1c777708cb8e9d37fb47e7ed3312d'
+  sha1 '0e5a6c152c5d7089899481d9de689d1f7e77bde1'
 
   keg_only "Older version"
 
-  def options
-    [['--without-java', 'Compile without Java support.']]
-  end
+  option 'without-java', 'Compile without Java support.'
 
   def install
     # BerkeleyDB dislikes parallel builds
@@ -19,7 +17,7 @@ class BerkeleyDb45 < Formula
     args = ["--disable-debug",
             "--prefix=#{prefix}", "--mandir=#{man}",
             "--enable-cxx"]
-    args << "--enable-java" unless ARGV.include? "--without-java"
+    args << "--enable-java" unless build.include? 'without-java'
 
     # BerkeleyDB requires you to build everything from the build_unix subdirectory
     Dir.chdir 'build_unix' do
