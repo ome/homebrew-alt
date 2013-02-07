@@ -4,8 +4,8 @@ class Omero < Formula
   homepage 'http://www.openmicroscopy.org/site/products/omero'
 
   head 'https://github.com/openmicroscopy/openmicroscopy.git', :branch => 'dev_4_4'
-  url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.5'
-  version '4.4.5'
+  url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.6'
+  version '4.4.6'
 
   option 'with-cpp', 'Build OmeroCpp libraries.'
   option 'with-ice34', 'Use Ice 3.4.'
@@ -93,7 +93,7 @@ index d9a57ec..6686c42 100644
              </try>
              <catch>
 -                <echo>UNKNOWN</echo>
-+                <echo>4.4.5</echo>
++                <echo>4.4.6</echo>
              </catch>
          </trycatch>
          </sequential>

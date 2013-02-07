@@ -4,8 +4,8 @@ class Bioformats < Formula
   homepage 'http://www.openmicroscopy.org/site/products/bio-formats'
 
   head 'https://github.com/openmicroscopy/bioformats.git', :branch => 'dev_4_4'
-  url 'https://github.com/openmicroscopy/bioformats.git', :tag => 'v4.4.5'
-  version '4.4.5'
+  url 'https://github.com/openmicroscopy/bioformats.git', :tag => 'v4.4.6'
+  version '4.4.6'
 
   option 'without-ome-tools', 'Do not build OME Tools.'
 
@@ -49,6 +49,6 @@ index d238aa6..e2ef921 100644
            input="${git.info}" regexp="Date: +([^\n]*)" select="\1"/>
        </then>
 +      <else>
-+        <property name="vcs.revision" value="03770c0"></property>
++        <property name="vcs.revision" value="3f142f767a"></property>
 +         </else>
      </if>
