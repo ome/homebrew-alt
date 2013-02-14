@@ -41,14 +41,18 @@ end
 
 __END__
 diff --git a/ant/common.xml b/ant/common.xml
-index d238aa6..e2ef921 100644
+index 4a719ae..fe0dc55 100644
 --- a/ant/common.xml
 +++ b/ant/common.xml
-@@ -49,6 +49,9 @@ Type "ant -p" for a list of targets.
+@@ -49,6 +49,11 @@ Type "ant -p" for a list of targets.
          <propertyregex property="vcs.date"
            input="${git.info}" regexp="Date: +([^\n]*)" select="\1"/>
        </then>
 +      <else>
-+        <property name="vcs.revision" value="3f142f767a"></property>
-+         </else>
++        <property name="vcs.revision" value="3f142f767a"/>
++        <property name="vcs.date"
++          value="Thu Feb 7 06:39:21 2013 -0800"/>
++      </else>
      </if>
+ 
+     <!-- set release version from repository URL -->

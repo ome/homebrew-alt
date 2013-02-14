@@ -98,15 +98,17 @@ index 6fd64ee..4387ce1 100644
          </trycatch>
          </sequential>
 diff --git a/components/bioformats/ant/common.xml b/components/bioformats/ant/common.xml
-index 4a719ae..5f3f664 100644
+index 4a719ae..fe0dc55 100644
 --- a/components/bioformats/ant/common.xml
 +++ b/components/bioformats/ant/common.xml
-@@ -49,6 +49,9 @@ Type "ant -p" for a list of targets.
+@@ -49,6 +49,11 @@ Type "ant -p" for a list of targets.
          <propertyregex property="vcs.date"
            input="${git.info}" regexp="Date: +([^\n]*)" select="\1"/>
        </then>
 +      <else>
-+        <property name="vcs.revision" value="3f142f767a"></property>
++        <property name="vcs.revision" value="3f142f767a"/>
++        <property name="vcs.date"
++          value="Thu Feb 7 06:39:21 2013 -0800"/>
 +      </else>
      </if>
  
