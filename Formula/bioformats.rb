@@ -4,8 +4,8 @@ class Bioformats < Formula
   homepage 'http://www.openmicroscopy.org/site/products/bio-formats'
 
   head 'https://github.com/openmicroscopy/bioformats.git', :branch => 'dev_4_4'
-  url 'https://github.com/openmicroscopy/bioformats.git', :tag => 'v4.4.5'
-  version '4.4.5'
+  url 'https://github.com/openmicroscopy/bioformats.git', :tag => 'v4.4.6'
+  version '4.4.6'
 
   option 'without-ome-tools', 'Do not build OME Tools.'
 
@@ -41,14 +41,18 @@ end
 
 __END__
 diff --git a/ant/common.xml b/ant/common.xml
-index d238aa6..e2ef921 100644
+index 4a719ae..fe0dc55 100644
 --- a/ant/common.xml
 +++ b/ant/common.xml
-@@ -49,6 +49,9 @@ Type "ant -p" for a list of targets.
+@@ -49,6 +49,11 @@ Type "ant -p" for a list of targets.
          <propertyregex property="vcs.date"
            input="${git.info}" regexp="Date: +([^\n]*)" select="\1"/>
        </then>
 +      <else>
-+        <property name="vcs.revision" value="03770c0"></property>
-+         </else>
++        <property name="vcs.revision" value="3f142f767a"/>
++        <property name="vcs.date"
++          value="Thu Feb 7 06:39:21 2013 -0800"/>
++      </else>
      </if>
+ 
+     <!-- set release version from repository URL -->
