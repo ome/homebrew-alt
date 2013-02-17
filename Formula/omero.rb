@@ -7,6 +7,10 @@ class Omero < Formula
   url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.6'
   version '4.4.6'
 
+  devel do
+    url 'https://github.com/openmicroscopy/openmicroscopy.git', :branch => 'develop'
+  end
+
   option 'with-cpp', 'Build OmeroCpp libraries.'
   option 'with-ice34', 'Use Ice 3.4.'
 
