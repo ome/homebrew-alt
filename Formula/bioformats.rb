@@ -17,7 +17,7 @@ class Bioformats < Formula
     # build generates a version number with 'git show' command
     # but Homebrew build runs in temp copy created via git checkout-index,
     # so 'git show' does not work.
-    DATA
+    DATA if not (build.head? or build.devel?)
   end
 
   def install

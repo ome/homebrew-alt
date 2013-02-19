@@ -50,7 +50,7 @@ class Omero < Formula
     # build generates a version number with 'git describe' command
     # but Homebrew build runs in temp copy created via git checkout-index,
     # so 'git describe' does not work.
-    DATA
+    DATA if not (build.head? or build.devel?)
   end
 
   def ice_link
