@@ -3,8 +3,8 @@ require 'formula'
 class Scc < Formula
   homepage 'https://github.com/openmicroscopy/snoopycrimecop'
   head 'https://github.com/openmicroscopy/snoopycrimecop.git', :branch => 'master'
-  url 'https://github.com/openmicroscopy/snoopycrimecop/archive/0.2.1.tar.gz'
-  sha1 '2658269f0c16ce6f2ad4873575a88e5c2661e58a'
+  url 'https://github.com/openmicroscopy/snoopycrimecop.git', :tag => '0.3.0'
+  version '0.3.0'
 
   def install
     File.rename("scc.py", "scc")
