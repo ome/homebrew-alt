@@ -4,8 +4,9 @@ class Bioformats < Formula
   homepage 'http://www.openmicroscopy.org/site/products/bio-formats'
 
   head 'https://github.com/openmicroscopy/bioformats.git', :branch => 'dev_4_4'
-  url 'https://github.com/openmicroscopy/bioformats.git', :tag => 'v4.4.6'
+  url 'https://github.com/openmicroscopy/bioformats/archive/v4.4.6.tar.gz'
   version '4.4.6'
+  sha1 '8678b424d3ad3b7f8442bc6f365e45a5b9fedcaf'
 
   option 'without-ome-tools', 'Do not build OME Tools.'
 
