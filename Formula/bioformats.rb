@@ -8,13 +8,18 @@ class Bioformats < Formula
   version '4.4.6'
   sha1 '8678b424d3ad3b7f8442bc6f365e45a5b9fedcaf'
 
+  devel do
+    url 'https://github.com/openmicroscopy/bioformats.git', :branch => 'develop'
+    version '5.0.0-DEV'
+  end
+
   option 'without-ome-tools', 'Do not build OME Tools.'
 
   def patches
     # build generates a version number with 'git show' command
     # but Homebrew build runs in temp copy created via git checkout-index,
     # so 'git show' does not work.
-    DATA
+    DATA if not (build.head? or build.devel?)
   end
 
   def install

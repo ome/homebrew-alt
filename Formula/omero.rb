@@ -7,6 +7,11 @@ class Omero < Formula
   url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.6'
   version '4.4.6'
 
+  devel do
+    url 'https://github.com/openmicroscopy/openmicroscopy.git', :branch => 'develop'
+    version '5.0.0-DEV'
+  end
+
   option 'with-cpp', 'Build OmeroCpp libraries.'
   option 'with-ice34', 'Use Ice 3.4.'
 
@@ -46,7 +51,7 @@ class Omero < Formula
     # build generates a version number with 'git describe' command
     # but Homebrew build runs in temp copy created via git checkout-index,
     # so 'git describe' does not work.
-    DATA
+    DATA if not (build.head? or build.devel?)
   end
 
   def ice_link
