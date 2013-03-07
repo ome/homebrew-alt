@@ -9,6 +9,7 @@ class Omero < Formula
 
   devel do
     url 'https://github.com/openmicroscopy/openmicroscopy.git', :branch => 'develop'
+    version '5.0.0-DEV'
   end
 
   option 'with-cpp', 'Build OmeroCpp libraries.'
