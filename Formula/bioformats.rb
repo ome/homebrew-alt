@@ -8,7 +8,7 @@ class Bioformats < Formula
   version '4.4.6'
 
   devel do
-    url 'https://github.com/openmicroscopy/openmicroscopy.git', :branch => 'develop'
+    url 'https://github.com/openmicroscopy/bioformats.git', :branch => 'develop'
   end
 
   option 'without-ome-tools', 'Do not build OME Tools.'
