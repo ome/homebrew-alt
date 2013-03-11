@@ -39,6 +39,9 @@ class Omero < Formula
 
     # Remove Windows files from bin directory
     rm Dir[prefix/"bin/*.bat"]
+
+    # Copy the python dependencies installation script
+    bin.install "docs/install/python_deps.sh" if (build.head? or build.devel?)
   end
 
   def config_file
@@ -68,12 +71,21 @@ class Omero < Formula
 
   end
 
-  def caveats; <<-EOS.undent
+  def caveats;
+    s = <<-EOS.undent
 
     For non-homebrew Python, you need to set your PYTHONPATH:
     export PYTHONPATH=#{lib}/python:$PYTHONPATH
 
     EOS
+
+    python_caveats = <<-EOS.undent
+    To finish the installation, source python_deps.sh in your shell:
+      source #{bin}/python_deps.sh
+
+    EOS
+    s += python_caveats if (build.head? or build.devel?)
+    return s
   end
 
   def test
