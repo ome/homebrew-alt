@@ -41,7 +41,8 @@ class Omero < Formula
     rm Dir[prefix/"bin/*.bat"]
 
     # Copy the python dependencies installation script
-    bin.install "docs/install/python_deps.sh" if (build.head? or build.devel?)
+    mv "docs/install/python_deps.sh", "docs/install/omero_python_deps"
+    bin.install "docs/install/omero_python_deps" if (build.head? or build.devel?)
   end
 
   def config_file
@@ -80,8 +81,9 @@ class Omero < Formula
     EOS
 
     python_caveats = <<-EOS.undent
-    To finish the installation, source python_deps.sh in your shell:
-      source #{bin}/python_deps.sh
+    To finish the installation, source or execute omero_python_deps in your
+    shell:
+      source #{bin}/omero_python_deps
 
     EOS
     s += python_caveats if (build.head? or build.devel?)
