@@ -59,11 +59,11 @@ class Omero < Formula
     python = lib+"python"
 
     if build.with? 'with-ice34'
-      zeroc = Formula.factory('ome/alt/ice')
+      zeroc_prefix = Formula.factory('ome/alt/ice').opt_prefix
     else
-      zeroc = Formula.factory('zeroc-ice33')
+      zeroc_prefix = Formula.factory('zeroc-ice33').opt_prefix
     end
-    zp = zeroc.prefix+"python"
+    zp = zeroc_prefix+"python"
     zp.cd { Dir["*"].each {|p| ln_sf zp + p, python + File.basename(p) }}
 
   end
