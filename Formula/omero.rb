@@ -40,9 +40,11 @@ class Omero < Formula
     # Remove Windows files from bin directory
     rm Dir[prefix/"bin/*.bat"]
 
-    # Copy the python dependencies installation script
-    mv "docs/install/python_deps.sh", "docs/install/omero_python_deps"
-    bin.install "docs/install/omero_python_deps" if (build.head? or build.devel?)
+    if (build.head? or build.devel?)
+      # Rename and copy the python dependencies installation script
+      mv "docs/install/python_deps.sh", "docs/install/omero_python_deps"
+      bin.install "docs/install/omero_python_deps"
+    end
   end
 
   def config_file
