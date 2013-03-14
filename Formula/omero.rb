@@ -83,9 +83,9 @@ class Omero < Formula
     EOS
 
     python_caveats = <<-EOS.undent
-    To finish the installation, source or execute omero_python_deps in your
+    To finish the installation, execute omero_python_deps in your
     shell:
-      source #{bin}/omero_python_deps
+      .#{bin}/omero_python_deps
 
     EOS
     s += python_caveats if (build.head? or build.devel?)
