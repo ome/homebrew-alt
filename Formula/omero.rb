@@ -39,6 +39,12 @@ class Omero < Formula
 
     # Remove Windows files from bin directory
     rm Dir[prefix/"bin/*.bat"]
+
+    if (build.head? or build.devel?)
+      # Rename and copy the python dependencies installation script
+      mv "docs/install/python_deps.sh", "docs/install/omero_python_deps"
+      bin.install "docs/install/omero_python_deps"
+    end
   end
 
   def config_file
@@ -68,12 +74,22 @@ class Omero < Formula
 
   end
 
-  def caveats; <<-EOS.undent
+  def caveats;
+    s = <<-EOS.undent
 
     For non-homebrew Python, you need to set your PYTHONPATH:
     export PYTHONPATH=#{lib}/python:$PYTHONPATH
 
     EOS
+
+    python_caveats = <<-EOS.undent
+    To finish the installation, execute omero_python_deps in your
+    shell:
+      .#{bin}/omero_python_deps
+
+    EOS
+    s += python_caveats if (build.head? or build.devel?)
+    return s
   end
 
   def test
