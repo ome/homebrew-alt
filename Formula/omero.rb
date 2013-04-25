@@ -4,8 +4,8 @@ class Omero < Formula
   homepage 'http://www.openmicroscopy.org/site/products/omero'
 
   head 'https://github.com/openmicroscopy/openmicroscopy.git', :branch => 'dev_4_4'
-  url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.6'
-  version '4.4.6'
+  url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.7'
+  version '4.4.7'
 
   devel do
     url 'https://github.com/openmicroscopy/openmicroscopy.git', :branch => 'develop'
@@ -40,11 +40,9 @@ class Omero < Formula
     # Remove Windows files from bin directory
     rm Dir[prefix/"bin/*.bat"]
 
-    if (build.head? or build.devel?)
-      # Rename and copy the python dependencies installation script
-      mv "docs/install/python_deps.sh", "docs/install/omero_python_deps"
-      bin.install "docs/install/omero_python_deps"
-    end
+    # Rename and copy the python dependencies installation script
+    mv "docs/install/python_deps.sh", "docs/install/omero_python_deps"
+    bin.install "docs/install/omero_python_deps"
   end
 
   def config_file
@@ -88,7 +86,7 @@ class Omero < Formula
       .#{bin}/omero_python_deps
 
     EOS
-    s += python_caveats if (build.head? or build.devel?)
+    s += python_caveats
     return s
   end
 
@@ -106,20 +104,20 @@ end
 
 __END__
 diff --git a/build.xml b/build.xml
-index 6fd64ee..4387ce1 100644
+index efa9e62..c6216de 100644
 --- a/build.xml
 +++ b/build.xml
-@@ -1016,7 +1016,7 @@ omero.version=${omero.version}
+@@ -1036,7 +1036,7 @@ omero.version=${omero.version}
                  <propertyregex property="version.describe" input="${fullversion}" regexp="@{regexp}" select="@{select}"/>
              </try>
              <catch>
 -                <echo>UNKNOWN</echo>
-+                <echo>4.4.6</echo>
++                <echo>4.4.7</echo>
              </catch>
          </trycatch>
          </sequential>
 diff --git a/components/bioformats/ant/common.xml b/components/bioformats/ant/common.xml
-index 4a719ae..fe0dc55 100644
+index 1b5fb9a..a598447 100644
 --- a/components/bioformats/ant/common.xml
 +++ b/components/bioformats/ant/common.xml
 @@ -49,6 +49,11 @@ Type "ant -p" for a list of targets.
@@ -127,9 +125,9 @@ index 4a719ae..fe0dc55 100644
            input="${git.info}" regexp="Date: +([^\n]*)" select="\1"/>
        </then>
 +      <else>
-+        <property name="vcs.revision" value="3f142f767a"/>
++        <property name="vcs.revision" value="19cb7c1e3d"/>
 +        <property name="vcs.date"
-+          value="Thu Feb 7 06:39:21 2013 -0800"/>
++          value="Wed Apr 24 23:55:11 2013 -0700"/>
 +      </else>
      </if>
  
