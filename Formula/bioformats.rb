@@ -4,9 +4,9 @@ class Bioformats < Formula
   homepage 'http://www.openmicroscopy.org/site/products/bio-formats'
 
   head 'https://github.com/openmicroscopy/bioformats.git', :branch => 'dev_4_4'
-  url 'https://github.com/openmicroscopy/bioformats/archive/v4.4.6.tar.gz'
-  version '4.4.6'
-  sha1 '8678b424d3ad3b7f8442bc6f365e45a5b9fedcaf'
+  url 'https://github.com/openmicroscopy/bioformats/archive/v4.4.7.tar.gz'
+  version '4.4.7'
+  sha1 'a28b91592bcee585d9741dde81eb60a2ced3fd6b'
 
   devel do
     url 'https://github.com/openmicroscopy/bioformats.git', :branch => 'develop'
@@ -47,7 +47,7 @@ end
 
 __END__
 diff --git a/ant/common.xml b/ant/common.xml
-index 4a719ae..fe0dc55 100644
+index 1b5fb9a..a598447 100644
 --- a/ant/common.xml
 +++ b/ant/common.xml
 @@ -49,6 +49,11 @@ Type "ant -p" for a list of targets.
@@ -55,9 +55,9 @@ index 4a719ae..fe0dc55 100644
            input="${git.info}" regexp="Date: +([^\n]*)" select="\1"/>
        </then>
 +      <else>
-+        <property name="vcs.revision" value="3f142f767a"/>
++        <property name="vcs.revision" value="19cb7c1e3d"/>
 +        <property name="vcs.date"
-+          value="Thu Feb 7 06:39:21 2013 -0800"/>
++          value="Wed Apr 24 23:55:11 2013 -0700"/>
 +      </else>
      </if>
  
