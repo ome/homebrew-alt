@@ -40,6 +40,10 @@ class Omero < Formula
     # Remove Windows files from bin directory
     rm Dir[prefix/"bin/*.bat"]
 
+    # Symlink var and etc directories
+    ln_sf prefix/var, var/"omero"
+    ln_sf prefix/etc, etc/"omero"
+
     # Rename and copy the python dependencies installation script
     mv "docs/install/python_deps.sh", "docs/install/omero_python_deps"
     bin.install "docs/install/omero_python_deps"
