@@ -4,9 +4,9 @@ class Bioformats < Formula
   homepage 'http://www.openmicroscopy.org/site/products/bio-formats'
 
   head 'https://github.com/openmicroscopy/bioformats.git', :branch => 'dev_4_4'
-  url 'https://github.com/openmicroscopy/bioformats/archive/v4.4.7.tar.gz'
-  version '4.4.7'
-  sha1 'a28b91592bcee585d9741dde81eb60a2ced3fd6b'
+  url 'https://github.com/openmicroscopy/bioformats/archive/v4.4.8.tar.gz'
+  version '4.4.8'
+  sha1 '1d3e2239ec1fb86caa38c8285011600795570961'
 
   devel do
     url 'https://github.com/openmicroscopy/bioformats.git', :branch => 'develop'
@@ -47,17 +47,16 @@ end
 
 __END__
 diff --git a/ant/common.xml b/ant/common.xml
-index 1b5fb9a..a598447 100644
+index c2760a2..eeffb5d 100644
 --- a/ant/common.xml
 +++ b/ant/common.xml
-@@ -49,6 +49,11 @@ Type "ant -p" for a list of targets.
+@@ -49,6 +49,10 @@ Type "ant -p" for a list of targets.
          <propertyregex property="vcs.date"
            input="${git.info}" regexp="Date: +([^\n]*)" select="\1"/>
        </then>
 +      <else>
-+        <property name="vcs.revision" value="19cb7c1e3d"/>
-+        <property name="vcs.date"
-+          value="Wed Apr 24 23:55:11 2013 -0700"/>
++        <property name="vcs.revision" value="660f607f71"/>
++        <property name="vcs.date" value="Wed May 1 06:57:13 2013 -0700"/>
 +      </else>
      </if>
  
