@@ -4,8 +4,8 @@ class Omero < Formula
   homepage 'http://www.openmicroscopy.org/site/products/omero'
 
   head 'https://github.com/openmicroscopy/openmicroscopy.git', :branch => 'dev_4_4'
-  url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.7'
-  version '4.4.7'
+  url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.8'
+  version '4.4.8'
 
   devel do
     url 'https://github.com/openmicroscopy/openmicroscopy.git', :branch => 'develop'
@@ -104,7 +104,7 @@ end
 
 __END__
 diff --git a/build.xml b/build.xml
-index efa9e62..c6216de 100644
+index efa9e62..976df1a 100644
 --- a/build.xml
 +++ b/build.xml
 @@ -1036,7 +1036,7 @@ omero.version=${omero.version}
@@ -112,22 +112,21 @@ index efa9e62..c6216de 100644
              </try>
              <catch>
 -                <echo>UNKNOWN</echo>
-+                <echo>4.4.7</echo>
++                <echo>4.4.8</echo>
              </catch>
          </trycatch>
          </sequential>
 diff --git a/components/bioformats/ant/common.xml b/components/bioformats/ant/common.xml
-index 1b5fb9a..a598447 100644
+index c2760a2..eeffb5d 100644
 --- a/components/bioformats/ant/common.xml
 +++ b/components/bioformats/ant/common.xml
-@@ -49,6 +49,11 @@ Type "ant -p" for a list of targets.
+@@ -49,6 +49,10 @@ Type "ant -p" for a list of targets.
          <propertyregex property="vcs.date"
            input="${git.info}" regexp="Date: +([^\n]*)" select="\1"/>
        </then>
 +      <else>
-+        <property name="vcs.revision" value="19cb7c1e3d"/>
-+        <property name="vcs.date"
-+          value="Wed Apr 24 23:55:11 2013 -0700"/>
++        <property name="vcs.revision" value="660f607f71"/>
++        <property name="vcs.date" value="Wed May 1 06:57:13 2013 -0700"/>
 +      </else>
      </if>
  
