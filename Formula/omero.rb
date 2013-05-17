@@ -20,7 +20,7 @@ class Omero < Formula
   depends_on 'hdf5'
   depends_on 'jpeg'
   depends_on 'gfortran'
-  depends_on 'ome/alt/ice' if build.with? 'ice34'
+  depends_on 'zeroc-ice34' if build.with? 'ice34'
   depends_on 'zeroc-ice33' unless build.with? 'ice34'
   depends_on 'mplayer' => :recommended
 
@@ -63,7 +63,7 @@ class Omero < Formula
     python = lib+"python"
 
     if build.with? 'ice34'
-      zeroc_prefix = Formula.factory('ome/alt/ice').opt_prefix
+      zeroc_prefix = Formula.factory('zeroc-ice34').opt_prefix
     else
       zeroc_prefix = Formula.factory('zeroc-ice33').opt_prefix
     end
