@@ -20,8 +20,8 @@ class Omero < Formula
   depends_on 'hdf5'
   depends_on 'jpeg'
   depends_on 'gfortran'
-  depends_on 'ome/alt/ice' if build.with? 'with-ice34'
-  depends_on 'zeroc-ice33' unless build.with? 'with-ice34'
+  depends_on 'ome/alt/ice' if build.with? 'ice34'
+  depends_on 'zeroc-ice33' unless build.with? 'ice34'
   depends_on 'mplayer' => :recommended
 
   def install
@@ -29,7 +29,7 @@ class Omero < Formula
     (Pathname.pwd/"etc/local.properties").write config_file
 
     args = ["./build.py", "-Dice.home=#{HOMEBREW_PREFIX}"]
-    if build.include? 'with-cpp'
+    if build.with? 'cpp'
         args << 'build-all'
     else
         args << 'build-default'
@@ -62,7 +62,7 @@ class Omero < Formula
     ohai "Linking zeroc libaries"
     python = lib+"python"
 
-    if build.with? 'with-ice34'
+    if build.with? 'ice34'
       zeroc_prefix = Formula.factory('ome/alt/ice').opt_prefix
     else
       zeroc_prefix = Formula.factory('zeroc-ice33').opt_prefix
