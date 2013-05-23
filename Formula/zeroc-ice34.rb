@@ -26,8 +26,8 @@ class ZerocIce34 < Formula
 
   option 'doc', 'Install documentation'
   option 'demo', 'Build demos'
-  option 'java', 'Build Java library'
-  option 'python', 'Build Python library'
+  option 'with-java', 'Build Java library'
+  option 'with-python', 'Build Python library'
 
   def install
     ENV.O2
@@ -54,7 +54,7 @@ class ZerocIce34 < Formula
       system "make install"
     end
 
-    if build.include? 'java'
+    if build.with? 'java'
       Dir.chdir "java" do
         system "ant ice-jar"
         Dir.chdir "lib" do
@@ -63,7 +63,7 @@ class ZerocIce34 < Formula
       end
     end
 
-    if build.include? 'python'
+    if build.with? 'python'
 
       inreplace "py/config/Make.rules" do |s|
         s.gsub! "/opt/Ice-$(VERSION)", prefix
