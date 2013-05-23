@@ -20,7 +20,7 @@ class Omero < Formula
   depends_on 'hdf5'
   depends_on 'jpeg'
   depends_on 'gfortran'
-  depends_on 'zeroc-ice34' if build.with? 'ice34'
+  depends_on 'zeroc-ice34' => 'with-python' if build.with? 'ice34'
   depends_on 'zeroc-ice33' unless build.with? 'ice34'
   depends_on 'mplayer' => :recommended
 
