@@ -6,7 +6,7 @@ class ZerocIce34 < Formula
   sha1 '8c84d6e3b227f583d05e08251e07047e6c3a6b42'
   homepage 'http://www.zeroc.com'
 
-  depends_on 'berkeley-db'
+  depends_on 'berkeley-db46' => '--without-java'
   depends_on 'mcpp'
   # other dependencies listed for Ice are for additional utilities not compiled
 
