@@ -16,10 +16,6 @@ class ZerocIce34 < Formula
      :p1 =>"https://raw.github.com/gist/1619052/5be2a4bed2d4f1cf41ce9b95141941a252adaaa2/Ice-3.4.2-db5.patch"}
   end
 
-  def site_package_dir
-    "#{which_python}/site-packages"
-  end
-
   def which_python
     "python" + `python -c 'import sys;print(sys.version[:3])'`.strip
   end
@@ -73,11 +69,6 @@ class ZerocIce34 < Formula
       Dir.chdir "py" do
         system "make"
         system "make install"
-      end
-
-      # install python bits
-      Dir.chdir "#{prefix}/python" do
-        (lib + site_package_dir).install Dir['*']
       end
     end
 
