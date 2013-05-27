@@ -23,6 +23,7 @@ class Omero < Formula
   depends_on 'zeroc-ice34' => 'with-python' if build.with? 'ice34'
   depends_on 'zeroc-ice33' unless build.with? 'ice34'
   depends_on 'mplayer' => :recommended
+  depends_on 'genshi' => :python if build.devel?
 
   def install
     # Create config file to specify dist.dir (see #9203)
