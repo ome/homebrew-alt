@@ -1,12 +1,12 @@
 require 'formula'
 
-class Ice < Formula
+class ZerocIce34 < Formula
 
   url 'http://www.zeroc.com/download/Ice/3.4/Ice-3.4.2.tar.gz'
   sha1 '8c84d6e3b227f583d05e08251e07047e6c3a6b42'
   homepage 'http://www.zeroc.com'
 
-  depends_on 'berkeley-db'
+  depends_on 'berkeley-db46' => '--without-java'
   depends_on 'mcpp'
   # other dependencies listed for Ice are for additional utilities not compiled
 
@@ -16,18 +16,14 @@ class Ice < Formula
      :p1 =>"https://raw.github.com/gist/1619052/5be2a4bed2d4f1cf41ce9b95141941a252adaaa2/Ice-3.4.2-db5.patch"}
   end
 
-  def site_package_dir
-    "#{which_python}/site-packages"
-  end
-
   def which_python
     "python" + `python -c 'import sys;print(sys.version[:3])'`.strip
   end
 
   option 'doc', 'Install documentation'
   option 'demo', 'Build demos'
-  option 'java', 'Build Java library'
-  option 'python', 'Build Python library'
+  option 'with-java', 'Build Java library'
+  option 'with-python', 'Build Python library'
 
   def install
     ENV.O2
@@ -54,7 +50,7 @@ class Ice < Formula
       system "make install"
     end
 
-    if build.include? 'java'
+    if build.with? 'java'
       Dir.chdir "java" do
         system "ant ice-jar"
         Dir.chdir "lib" do
@@ -63,7 +59,7 @@ class Ice < Formula
       end
     end
 
-    if build.include? 'python'
+    if build.with? 'python'
 
       inreplace "py/config/Make.rules" do |s|
         s.gsub! "/opt/Ice-$(VERSION)", prefix
@@ -73,11 +69,6 @@ class Ice < Formula
       Dir.chdir "py" do
         system "make"
         system "make install"
-      end
-
-      # install python bits
-      Dir.chdir "#{prefix}/python" do
-        (lib + site_package_dir).install Dir['*']
       end
     end
 
