@@ -10,6 +10,7 @@ class ZerocIce33 < Formula
 
   depends_on 'mcpp'
   depends_on 'berkeley-db46' => '--without-java'
+  depends_on :python
 
   def install
 
@@ -24,6 +25,7 @@ class ZerocIce33 < Formula
     system "cd cpp && make MCPP_HOME=#{mcpp.prefix} DB_HOME=#{bdb46.prefix} OPTIMIZE=yes prefix=#{prefix} embedded_runpath_prefix=#{prefix} install"
 
     ENV["ICE_HOME"] = "#{prefix}"
+    ENV["PYTHON_HOME"] = python.prefix if python.brewed? and python.framework?
     system "cd rb && make OPTIMIZE=yes prefix=#{prefix} embedded_runpath_prefix=#{prefix} install"
     system "cd py && make OPTIMIZE=yes prefix=#{prefix} embedded_runpath_prefix=#{prefix} install"
 
