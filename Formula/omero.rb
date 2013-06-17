@@ -15,6 +15,7 @@ class Omero < Formula
   option 'with-cpp', 'Build OmeroCpp libraries.'
   option 'with-ice34', 'Use Ice 3.4.'
 
+  depends_on :python
   depends_on 'ccache' => :recommended
   depends_on 'pkg-config' => :build
   depends_on 'hdf5'
