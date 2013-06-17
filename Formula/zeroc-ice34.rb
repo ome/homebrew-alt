@@ -17,10 +17,6 @@ class ZerocIce34 < Formula
      :p1 =>"https://raw.github.com/gist/1619052/5be2a4bed2d4f1cf41ce9b95141941a252adaaa2/Ice-3.4.2-db5.patch"}
   end
 
-  def which_python
-    "python" + `python -c 'import sys;print(sys.version[:3])'`.strip
-  end
-
   option 'doc', 'Install documentation'
   option 'demo', 'Build demos'
   option 'with-java', 'Build Java library'
