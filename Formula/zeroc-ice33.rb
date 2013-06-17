@@ -6,10 +6,11 @@ class ZerocIce33 < Formula
   url 'https://github.com/joshmoore/zeroc-ice/archive/v.3.3.1-clang.tar.gz'
   sha1 'd6bac03c32a27fe1414c519d3e6e08a2156232b6'
 
-  head 'http://github.com/joshmoore/zeroc-ice.git', :branch => 'Ice-3.3.1'
+  head 'https://github.com/joshmoore/zeroc-ice.git', :branch => 'Ice-3.3.1'
 
   depends_on 'mcpp'
   depends_on 'berkeley-db46' => '--without-java'
+  depends_on :python
 
   def install
 
@@ -24,6 +25,7 @@ class ZerocIce33 < Formula
     system "cd cpp && make MCPP_HOME=#{mcpp.prefix} DB_HOME=#{bdb46.prefix} OPTIMIZE=yes prefix=#{prefix} embedded_runpath_prefix=#{prefix} install"
 
     ENV["ICE_HOME"] = "#{prefix}"
+    ENV["PYTHON_HOME"] = python.prefix if python.brewed? and python.framework?
     system "cd rb && make OPTIMIZE=yes prefix=#{prefix} embedded_runpath_prefix=#{prefix} install"
     system "cd py && make OPTIMIZE=yes prefix=#{prefix} embedded_runpath_prefix=#{prefix} install"
 
