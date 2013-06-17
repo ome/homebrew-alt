@@ -13,6 +13,7 @@ class Bioformats < Formula
     version '5.0.0-DEV'
   end
 
+  depends_on :python if build.devel?
   depends_on 'genshi' => :python if build.devel?
   option 'without-ome-tools', 'Do not build OME Tools.'
 
