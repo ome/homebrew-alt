@@ -8,6 +8,7 @@ class ZerocIce34 < Formula
 
   depends_on 'berkeley-db46' => '--without-java'
   depends_on 'mcpp'
+  depends_on :python
   # other dependencies listed for Ice are for additional utilities not compiled
 
   def patches
@@ -66,6 +67,7 @@ class ZerocIce34 < Formula
         s.gsub! "/opt/Ice-$(VERSION_MAJOR).$(VERSION_MINOR)", prefix
       end
 
+      ENV["PYTHON_HOME"] = python.prefix if python.brewed? and python.framework?
       Dir.chdir "py" do
         system "make"
         system "make install"
