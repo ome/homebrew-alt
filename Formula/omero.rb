@@ -30,7 +30,7 @@ class Omero < Formula
     # Create config file to specify dist.dir (see #9203)
     (Pathname.pwd/"etc/local.properties").write config_file
 
-    args = ["./build.py", "-Dice.home=#{HOMEBREW_PREFIX}"]
+    args = ["./build.py", "-Dice.home=#{ice_prefix}"]
     if build.with? 'cpp'
         args << 'build-all'
     else
@@ -64,14 +64,17 @@ class Omero < Formula
     ohai "Linking zeroc libaries"
     python = lib+"python"
 
-    if build.with? 'ice34'
-      zeroc_prefix = Formula.factory('zeroc-ice34').opt_prefix
-    else
-      zeroc_prefix = Formula.factory('zeroc-ice33').opt_prefix
-    end
-    zp = zeroc_prefix+"python"
+    zp = ice_prefix+"python"
     zp.cd { Dir["*"].each {|p| ln_sf zp + p, python + File.basename(p) }}
 
+  end
+
+  def ice_prefix
+    if build.with? 'ice34'
+      Formula.factory('zeroc-ice34').opt_prefix
+    else
+      Formula.factory('zeroc-ice33').opt_prefix
+    end
   end
 
   def caveats;
