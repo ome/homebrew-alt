@@ -8,8 +8,8 @@ class Omero < Formula
   version '4.4.8p1'
 
   devel do
-    url 'https://github.com/openmicroscopy/openmicroscopy.git', :branch => 'develop'
-    version '5.0.0-DEV'
+    url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.5.0.0-beta1'
+    version '5.0.0-beta1'
   end
 
   option 'with-cpp', 'Build OmeroCpp libraries.'
