@@ -5,12 +5,12 @@ class Bioformats < Formula
 
   head 'https://github.com/openmicroscopy/bioformats.git', :branch => 'dev_4_4'
   url 'https://github.com/openmicroscopy/bioformats/archive/v4.4.8.tar.gz'
-  version '4.4.8'
   sha1 '1d3e2239ec1fb86caa38c8285011600795570961'
 
   devel do
-    url 'https://github.com/openmicroscopy/bioformats.git', :branch => 'develop'
-    version '5.0.0-DEV'
+    url 'https://github.com/openmicroscopy/bioformats/archive/v5.0.0-beta1.tar.gz'
+    version '5.0.0-beta1'
+    sha1 '9d5ee6b5c414318e1718fdba2a8c88d3cfe64dd3'
   end
 
   depends_on :python if build.devel?
