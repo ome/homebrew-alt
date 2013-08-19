@@ -5,6 +5,7 @@ class ZerocIce33 < Formula
 
   url 'https://github.com/joshmoore/zeroc-ice/archive/v.3.3.1-clang.tar.gz'
   sha1 'd6bac03c32a27fe1414c519d3e6e08a2156232b6'
+  version '3.3.1'
 
   head 'https://github.com/joshmoore/zeroc-ice.git', :branch => 'Ice-3.3.1'
 

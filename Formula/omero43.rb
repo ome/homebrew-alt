@@ -1,13 +1,12 @@
 require 'formula'
 
 class Omero43 < Formula
-  homepage 'https://www.openmicroscopy.org'
+  homepage 'http://www.openmicroscopy.org/site/products/omero'
 
-  url 'https://github.com/openmicroscopy/openmicroscopy/tarball/v.4.3.4'
-  md5 'c5b32ba1452ae2e038c1fc9b5760c811'
-  sha1 '2cb765f6b2de3a208ea5df5847473bf27056e830'
-  version '4.3.4'
+  url 'https://github.com/openmicroscopy/openmicroscopy/archive/v.4.3.4.tar.gz'
+  sha1 '44a90eb971a3b0f8fcba7afd41051ceb7f06cd6e'
 
+  depends_on :python
   depends_on 'mplayer'
   depends_on 'zeroc-ice33'
 

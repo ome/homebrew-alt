@@ -1,0 +1,3 @@
+language: objective-c
+before_script: brew update
+script: brew audit Formula/*.rb

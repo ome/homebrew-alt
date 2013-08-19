@@ -8,19 +8,19 @@ class Omero < Formula
   version '4.4.8p1'
 
   devel do
-    url 'https://github.com/openmicroscopy/openmicroscopy.git', :branch => 'develop'
-    version '5.0.0-DEV'
+    url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.5.0.0-beta1'
+    version '5.0.0-beta1'
   end
 
   option 'with-cpp', 'Build OmeroCpp libraries.'
   option 'with-ice34', 'Use Ice 3.4.'
 
   depends_on :python
+  depends_on :fortran
   depends_on 'ccache' => :recommended
   depends_on 'pkg-config' => :build
   depends_on 'hdf5'
   depends_on 'jpeg'
-  depends_on 'gfortran'
   depends_on 'zeroc-ice34' => 'with-python' if build.with? 'ice34'
   depends_on 'zeroc-ice33' unless build.with? 'ice34'
   depends_on 'mplayer' => :recommended
