@@ -1,9 +1,8 @@
 language: objective-c
 env:
-  - FORMULA=bioformats
-  - FORMULA=zeroc-ice33
-  - FORMULA=zeroc-ice34
+  - FORMULA=bioformats BREW_OPTS=
+  - FORMULA=bioformats BREW_OPTS=--devel
 before_script:
     - brew update
     - brew audit Formula/*.rb
-script: brew install Formula/$FORMULA.rb
+script: brew install Formula/$FORMULA.rb $BREW_OPTS
