@@ -2,9 +2,12 @@ language: objective-c
 env:
   - FORMULA=bioformats BREW_OPTS=
   - FORMULA=bioformats BREW_OPTS=--devel
+  - FORMULA=zeroc-ice33 BREW_OPTS=
+  - FORMULA=zeroc-ice34 BREW_OPTS=
 before_script:
     - sudo easy_install pip
     - sudo pip install genshi
     - brew update
+    - brew tap ome/alt
     - brew audit Formula/*.rb
 script: brew install Formula/$FORMULA.rb $BREW_OPTS
