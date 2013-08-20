@@ -1,3 +1,9 @@
 language: objective-c
-before_script: brew update
-script: brew audit Formula/*.rb
+env:
+  - FORMULA=bioformats
+  - FORMULA=zeroc-ice33
+  - FORMULA=zeroc-ice34
+before_script:
+    - brew update
+    - brew audit Formula/*.rb
+script: brew install Formula/$FORMULA.rb
