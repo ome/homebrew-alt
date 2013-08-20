@@ -4,7 +4,7 @@ env:
   - FORMULA=bioformats BREW_OPTS=--devel
 before_script:
     - sudo easy_install pip
-    - pip install genshi
+    - sudo pip install genshi
     - brew update
     - brew audit Formula/*.rb
 script: brew install Formula/$FORMULA.rb $BREW_OPTS
