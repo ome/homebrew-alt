@@ -10,4 +10,6 @@ before_script:
     - brew update
     - brew tap ome/alt
     - brew audit Formula/*.rb
-script: brew install Formula/$FORMULA.rb $BREW_OPTS
+script:
+    - brew install Formula/$FORMULA.rb $BREW_OPTS
+    - brew test Formula/$FORMULA.rb
