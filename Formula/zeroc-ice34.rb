@@ -71,4 +71,8 @@ class ZerocIce34 < Formula
     end
 
   end
+  def test
+    system "slice2java", "--version"
+    system "icegridnode", "--version"
+  end
 end
