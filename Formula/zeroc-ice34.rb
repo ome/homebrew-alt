@@ -14,7 +14,7 @@ class ZerocIce34 < Formula
   def patches
     # Patch for Ice-3.4.2 to work with Berkely DB 5.X rather than 4.X
     {:p0 => "http://www.zeroc.com/forums/attachments/patches/973d1330948195-patch-compiling-ice-clang-gcc4-7-ice_for_clang_2012-03-05.txt",
-     :p1 =>"https://raw.github.com/gist/1619052/5be2a4bed2d4f1cf41ce9b95141941a252adaaa2/Ice-3.4.2-db5.patch"}
+     :p1 => DATA}
   end
 
   option 'doc', 'Install documentation'
@@ -57,7 +57,6 @@ class ZerocIce34 < Formula
     end
 
     if build.with? 'python'
-
       inreplace "py/config/Make.rules" do |s|
         s.gsub! "/opt/Ice-$(VERSION)", prefix
         s.gsub! "/opt/Ice-$(VERSION_MAJOR).$(VERSION_MINOR)", prefix
@@ -76,3 +75,21 @@ class ZerocIce34 < Formula
     system "icegridnode", "--version"
   end
 end
+
+__END__
+--- ./cpp/src/Freeze/MapI.cpp
++++ ./cpp/src/Freeze/MapI.cpp
+@@ -1487,10 +1487,10 @@
+
+     try
+     {
+-#if DB_VERSION_MAJOR != 4
+-#error Freeze requires DB 4.x
++#if DB_VERSION_MAJOR < 4
++#error Freeze requires DB 4.x or greater
+ #endif
+-#if DB_VERSION_MINOR < 3
++#if DB_VERSION_MAJOR == 4 && DB_VERSION_MINOR < 3
+         _db->stat(&s, 0);
+ #else
+         _db->stat(_connection->dbTxn(), &s, 0);
