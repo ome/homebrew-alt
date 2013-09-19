@@ -14,5 +14,5 @@ before_script:
     - brew tap ome/alt
     - brew audit Formula/*.rb
 script:
-    - brew install Formula/$FORMULA.rb $BREW_OPTS
+    - VERBOSE=1 brew install Formula/$FORMULA.rb $BREW_OPTS
     - brew test Formula/$FORMULA.rb
