@@ -4,6 +4,7 @@ env:
   - FORMULA=bioformats BREW_OPTS=--devel
   - FORMULA=zeroc-ice33 BREW_OPTS=
   - FORMULA=zeroc-ice34 BREW_OPTS=
+  - FORMULA=zeroc-ice34 BREW_OPTS=--with-python
 before_script:
     - sudo easy_install pip
     - sudo pip install genshi
