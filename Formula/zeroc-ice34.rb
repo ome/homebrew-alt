@@ -12,8 +12,12 @@ class ZerocIce34 < Formula
   # other dependencies listed for Ice are for additional utilities not compiled
 
   def patches
-    # Patch for Ice-3.4.2 to work with Berkely DB 5.X rather than 4.X
-    {:p0 => "http://www.zeroc.com/forums/attachments/patches/973d1330948195-patch-compiling-ice-clang-gcc4-7-ice_for_clang_2012-03-05.txt",
+    { # Patch for Ice-3.4.2 to compile with clang
+      :p0 => "http://www.zeroc.com/forums/attachments/patches/973d1330948195-patch-compiling-ice-clang-gcc4-7-ice_for_clang_2012-03-05.txt",
+     # Inline Patch
+     #  * for Ice-3.4.2 to work with Berkeley DB 5.X rather than 4.X
+     #  * for Ice-3.4.2 to compile with JDK-7
+     #    See http://www.zeroc.com/forums/help-center/5561-java-7-support.html
      :p1 => DATA}
   end
 
@@ -93,3 +97,27 @@ __END__
          _db->stat(&s, 0);
  #else
          _db->stat(_connection->dbTxn(), &s, 0);
+
+--- a/java/src/IceInternal/OutgoingConnectionFactory.java
++++ b/java/src/IceInternal/OutgoingConnectionFactory.java
+@@ -17,7 +17,7 @@ public final class OutgoingConnectionFactory
+     private static class MultiHashMap<K, V> extends java.util.HashMap<K, java.util.List<V>>
+     {
+         public void
+-        put(K key, V value)
++        putOne(K key, V value)
+         {
+             java.util.List<V> list = this.get(key);
+             if(list == null)
+@@ -693,9 +693,9 @@ public final class OutgoingConnectionFactory
+             throw ex;
+        }
+ 
+-        _connections.put(ci.connector, connection);
+-        _connectionsByEndpoint.put(connection.endpoint(), connection);
+-        _connectionsByEndpoint.put(connection.endpoint().compress(true), connection);
++        _connections.putOne(ci.connector, connection);
++        _connectionsByEndpoint.putOne(connection.endpoint(), connection);
++        _connectionsByEndpoint.putOne(connection.endpoint().compress(true), connection);
+         return connection;
+     }
