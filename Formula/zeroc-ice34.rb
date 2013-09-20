@@ -15,7 +15,7 @@ class ZerocIce34 < Formula
     { # Patch for Ice-3.4.2 to compile with clang
       :p0 => "http://www.zeroc.com/forums/attachments/patches/973d1330948195-patch-compiling-ice-clang-gcc4-7-ice_for_clang_2012-03-05.txt",
      # Inline Patch
-     #  * for Ice-3.4.2 to work with Berkely DB 5.X rather than 4.X
+     #  * for Ice-3.4.2 to work with Berkeley DB 5.X rather than 4.X
      #  * for Ice-3.4.2 to compile with JDK-7
      #    See http://www.zeroc.com/forums/help-center/5561-java-7-support.html
      :p1 => DATA}
