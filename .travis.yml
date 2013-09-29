@@ -12,7 +12,8 @@ before_script:
     - sudo pip install genshi
     - brew update
     - brew tap ome/alt
+    - brew tap homebrew/science
     - brew audit Formula/*.rb
 script:
-    - brew install Formula/$FORMULA.rb $BREW_OPTS
+    - VERBOSE=1 brew install Formula/$FORMULA.rb $BREW_OPTS
     - brew test Formula/$FORMULA.rb
