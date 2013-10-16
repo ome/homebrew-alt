@@ -121,18 +121,3 @@ index efa9e62..976df1a 100644
          </trycatch>
          </sequential>
 
-diff --git a/components/bioformats/ant/common.xml b/components/bioformats/ant/common.xml
-index 149bb2d..a8ed9a7 100644
---- a/components/bioformats/ant/common.xml
-+++ b/components/bioformats/ant/common.xml
-@@ -107,7 +107,9 @@ Type "ant -p" for a list of targets.
-    </if>
-
-    <!-- set release version by default if nothing is set -->
--    <property name="release.version" value="UNKNOWN"/>
-+    <property name="vcs.revision" value="22bff853fa"/>
-+    <property name="vcs.date" value="Tue Oct 15 09:11:40 2013 -0700"/>
-+    <property name="release.version" value="4.4.9"/>
-  </target>
-
-</project>
