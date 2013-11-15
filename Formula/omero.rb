@@ -13,7 +13,7 @@ class Omero < Formula
 
   option 'with-cpp', 'Build OmeroCpp libraries.'
   option 'with-ice33', 'Use Ice 3.3.'
-  option 'with-ice35', 'Use Ice 3.5.'
+  option 'with-ice34', 'Use Ice 3.4.'
 
   depends_on :python
   depends_on :fortran
@@ -21,8 +21,8 @@ class Omero < Formula
   depends_on 'pkg-config' => :build
   depends_on 'hdf5'
   depends_on 'jpeg'
-  depends_on 'ice' if build.with? 'ice35'
-  depends_on 'zeroc-ice34' => 'with-python' unless build.with? 'ice33' or build.with? 'ice35'
+  depends_on 'ice' unless build.with? 'ice33' or build.with? 'ice34'
+  depends_on 'zeroc-ice34' => 'with-python' if build.with? 'ice34'
   depends_on 'zeroc-ice33' if build.with? 'ice33'
   depends_on 'mplayer' => :recommended
   depends_on 'genshi' => :python if build.devel?
@@ -73,10 +73,10 @@ class Omero < Formula
   def ice_prefix
     if build.with? 'ice33'
       Formula.factory('zeroc-ice33').opt_prefix
-    elsif build.with? 'ice35'
-      Formula.factory('ice').opt_prefix
-    else
+    elsif build.with? 'ice34'
       Formula.factory('zeroc-ice34').opt_prefix
+    else
+      Formula.factory('ice').opt_prefix
     end
   end
 
