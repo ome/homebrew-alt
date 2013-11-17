@@ -41,7 +41,6 @@ class Omero < Formula
       args << 'build-default'
     end
     system *args
-    ice_link
 
     # Remove Windows files from bin directory
     rm Dir[prefix/"bin/*.bat"]
@@ -62,15 +61,6 @@ class Omero < Formula
     # but Homebrew build runs in temp copy created via git checkout-index,
     # so 'git describe' does not work.
     DATA if not (build.head? or build.devel?)
-  end
-
-  def ice_link
-    ohai "Linking zeroc libaries"
-    python = lib+"python"
-
-    zp = ice_prefix+"python"
-    zp.cd { Dir["*"].each {|p| ln_sf zp + p, python + File.basename(p) }}
-
   end
 
   def ice_prefix
