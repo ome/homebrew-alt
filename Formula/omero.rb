@@ -31,11 +31,14 @@ class Omero < Formula
     # Create config file to specify dist.dir (see #9203)
     (Pathname.pwd/"etc/local.properties").write config_file
 
+    unless build.with? 'ice33' or build.with? 'ice34'
+       ENV['SLICEPATH'] = "#{HOMEBREW_PREFIX}/share/Ice-3.5/slice"
+    end
     args = ["./build.py", "-Dice.home=#{ice_prefix}"]
     if build.with? 'cpp'
-        args << 'build-all'
+      args << 'build-all'
     else
-        args << 'build-default'
+      args << 'build-default'
     end
     system *args
     ice_link
