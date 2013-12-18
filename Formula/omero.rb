@@ -7,8 +7,8 @@ class Omero < Formula
   url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.9'
 
   devel do
-    url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.5.0.0-beta1'
-    version '5.0.0-beta1'
+    url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.5.0.0-rc1'
+    version '5.0.0-rc1'
   end
 
   option 'with-cpp', 'Build OmeroCpp libraries.'
@@ -113,7 +113,7 @@ index efa9e62..976df1a 100644
              </try>
              <catch>
 -                <echo>UNKNOWN</echo>
-+                <echo>4.4.9</echo>
++                <echo>5.0.0-rc1</echo>
              </catch>
          </trycatch>
          </sequential>
