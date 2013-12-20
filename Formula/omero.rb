@@ -113,7 +113,7 @@ index efa9e62..976df1a 100644
              </try>
              <catch>
 -                <echo>UNKNOWN</echo>
-+                <echo>5.0.0-rc1</echo>
++                <echo>4.4.9</echo>
              </catch>
          </trycatch>
          </sequential>
