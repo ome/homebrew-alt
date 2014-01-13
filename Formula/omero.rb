@@ -7,12 +7,13 @@ class Omero < Formula
   url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.9'
 
   devel do
-    url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.5.0.0-beta1'
-    version '5.0.0-beta1'
+    url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.5.0.0-rc1'
+    version '5.0.0-rc1'
   end
 
   option 'with-cpp', 'Build OmeroCpp libraries.'
   option 'with-ice33', 'Use Ice 3.3.'
+  option 'with-ice34', 'Use Ice 3.4.'
 
   depends_on :python
   depends_on :fortran
@@ -20,7 +21,8 @@ class Omero < Formula
   depends_on 'pkg-config' => :build
   depends_on 'hdf5'
   depends_on 'jpeg'
-  depends_on 'zeroc-ice34' => 'with-python' unless build.with? 'ice33'
+  depends_on 'ice' unless build.with? 'ice33' or build.with? 'ice34'
+  depends_on 'zeroc-ice34' => 'with-python' if build.with? 'ice34'
   depends_on 'zeroc-ice33' if build.with? 'ice33'
   depends_on 'mplayer' => :recommended
   depends_on 'genshi' => :python if build.devel?
@@ -29,14 +31,16 @@ class Omero < Formula
     # Create config file to specify dist.dir (see #9203)
     (Pathname.pwd/"etc/local.properties").write config_file
 
+    unless build.with? 'ice33' or build.with? 'ice34'
+       ENV['SLICEPATH'] = "#{HOMEBREW_PREFIX}/share/Ice-3.5/slice"
+    end
     args = ["./build.py", "-Dice.home=#{ice_prefix}"]
     if build.with? 'cpp'
-        args << 'build-all'
+      args << 'build-all'
     else
-        args << 'build-default'
+      args << 'build-default'
     end
     system *args
-    ice_link
 
     # Remove Windows files from bin directory
     rm Dir[prefix/"bin/*.bat"]
@@ -59,20 +63,13 @@ class Omero < Formula
     DATA if not (build.head? or build.devel?)
   end
 
-  def ice_link
-    ohai "Linking zeroc libaries"
-    python = lib+"python"
-
-    zp = ice_prefix+"python"
-    zp.cd { Dir["*"].each {|p| ln_sf zp + p, python + File.basename(p) }}
-
-  end
-
   def ice_prefix
-    unless build.with? 'ice33'
+    if build.with? 'ice33'
+      Formula.factory('zeroc-ice33').opt_prefix
+    elsif build.with? 'ice34'
       Formula.factory('zeroc-ice34').opt_prefix
     else
-      Formula.factory('zeroc-ice33').opt_prefix
+      Formula.factory('ice').opt_prefix
     end
   end
 

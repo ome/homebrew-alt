@@ -8,9 +8,9 @@ class Bioformats < Formula
   sha1 '6f867488709183118b901986d1fda4631e219174'
 
   devel do
-    url 'https://github.com/openmicroscopy/bioformats/archive/v5.0.0-beta1.tar.gz'
-    version '5.0.0-beta1'
-    sha1 '9d5ee6b5c414318e1718fdba2a8c88d3cfe64dd3'
+    url 'https://github.com/openmicroscopy/bioformats/archive/v5.0.0-rc1.tar.gz'
+    version '5.0.0-rc1'
+    sha1 '56d0cfad860bc20021b21e18c1bc4e635ba71ce8'
   end
 
   depends_on :python if build.devel?
