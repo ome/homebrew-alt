@@ -4,8 +4,8 @@ class Bioformats < Formula
   homepage 'http://www.openmicroscopy.org/site/products/bio-formats'
 
   head 'https://github.com/openmicroscopy/bioformats.git', :branch => 'dev_4_4'
-  url 'https://github.com/openmicroscopy/bioformats/archive/v4.4.9.tar.gz'
-  sha1 '6f867488709183118b901986d1fda4631e219174'
+  url 'https://github.com/openmicroscopy/bioformats/archive/v4.4.10.tar.gz'
+  sha1 '875c552aea03107d5e4e9b55320b0abf5918effa'
 
   devel do
     url 'https://github.com/openmicroscopy/bioformats/archive/v5.0.0-rc1.tar.gz'
@@ -60,9 +60,9 @@ index 149bb2d..a8ed9a7 100644
  
      <!-- set release version by default if nothing is set -->
 -    <property name="release.version" value="UNKNOWN"/>
-+    <property name="vcs.revision" value="22bff853fa"/>
-+    <property name="vcs.date" value="Tue Oct 15 09:11:40 2013 -0700"/>
-+    <property name="release.version" value="4.4.9"/>
++    <property name="vcs.revision" value="d853f51"/>
++    <property name="vcs.date" value="Tue Jan 14 11:59:30 2014 -0800"/>
++    <property name="release.version" value="4.4.10"/>
    </target>
  
  </project>
