@@ -4,7 +4,7 @@ class Omero < Formula
   homepage 'http://www.openmicroscopy.org/site/products/omero'
 
   head 'https://github.com/openmicroscopy/openmicroscopy.git', :branch => 'dev_4_4'
-  url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.9'
+  url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.10'
 
   devel do
     url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.5.0.0-rc1'
@@ -113,7 +113,7 @@ index efa9e62..976df1a 100644
              </try>
              <catch>
 -                <echo>UNKNOWN</echo>
-+                <echo>4.4.9</echo>
++                <echo>4.4.10</echo>
              </catch>
          </trycatch>
          </sequential>
