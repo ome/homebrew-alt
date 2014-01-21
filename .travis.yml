@@ -8,8 +8,6 @@ env:
   - FORMULA=zeroc-ice34 BREW_OPTS=--with-python
   - FORMULA=zeroc-ice34 BREW_OPTS=--with-java
 before_script:
-    - sudo easy_install pip
-    - sudo pip install genshi --no-use-wheel
     - brew update
     - brew tap ome/alt
     - brew tap homebrew/science
