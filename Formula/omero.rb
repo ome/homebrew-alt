@@ -11,6 +11,11 @@ class Omero < Formula
     version '5.0.0-rc1'
   end
 
+  resource 'genshi' do
+    url 'https://pypi.python.org/packages/source/G/Genshi/Genshi-0.7.tar.gz'
+    sha1 'f34b762736d2814bcdea075f6b01b9de6c61aa61'
+  end
+
   option 'with-cpp', 'Build OmeroCpp libraries.'
   option 'with-ice33', 'Use Ice 3.3.'
   option 'with-ice34', 'Use Ice 3.4.'
@@ -25,9 +30,15 @@ class Omero < Formula
   depends_on 'zeroc-ice34' => 'with-python' if build.with? 'ice34'
   depends_on 'zeroc-ice33' if build.with? 'ice33'
   depends_on 'mplayer' => :recommended
-  depends_on 'genshi' => :python if build.devel?
 
   def install
+    if build.devel?
+      ENV.prepend_create_path 'PYTHONPATH', libexec+'lib/python2.7/site-packages'
+      install_args = [ "setup.py", "install", "--prefix=#{libexec}" ]
+
+      resource('genshi').stage { system "python", *install_args }
+    end
+
     # Create config file to specify dist.dir (see #9203)
     (Pathname.pwd/"etc/local.properties").write config_file
 

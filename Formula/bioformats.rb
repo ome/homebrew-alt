@@ -13,8 +13,12 @@ class Bioformats < Formula
     sha1 '56d0cfad860bc20021b21e18c1bc4e635ba71ce8'
   end
 
+  resource 'genshi' do
+    url 'https://pypi.python.org/packages/source/G/Genshi/Genshi-0.7.tar.gz'
+    sha1 'f34b762736d2814bcdea075f6b01b9de6c61aa61'
+  end
+
   depends_on :python if build.devel?
-  depends_on 'genshi' => :python if build.devel?
   option 'without-ome-tools', 'Do not build OME Tools.'
 
   def patches
@@ -25,6 +29,12 @@ class Bioformats < Formula
   end
 
   def install
+    if build.devel?
+      ENV.prepend_create_path 'PYTHONPATH', libexec+'lib/python2.7/site-packages'
+      install_args = [ "setup.py", "install", "--prefix=#{libexec}" ]
+
+      resource('genshi').stage { system "python", *install_args }
+    end
     # Build libraries
     args = ["ant", "clean" ,"tools", "utils"]
     if not build.include? 'without-ome-tools'
