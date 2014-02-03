@@ -1,4 +1,6 @@
 language: objective-c
+matrix:
+  fast_finish: true
 env:
   - FORMULA=bioformats BREW_OPTS=
   - FORMULA=bioformats BREW_OPTS=--without-ome-tools
