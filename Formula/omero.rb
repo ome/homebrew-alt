@@ -60,7 +60,11 @@ class Omero < Formula
     # build generates a version number with 'git describe' command
     # but Homebrew build runs in temp copy created via git checkout-index,
     # so 'git describe' does not work.
-    DATA if not (build.head? or build.devel?)
+    if build.devel?
+      {:p1 => "https://gist.github.com/sbesson/8783502/raw/353f5de3f11d1b0da58a7a7f6413d3ad0aa1fb08/build.xml.patch"}
+    elsif not build.head?
+      DATA
+    end
   end
 
   def ice_prefix
