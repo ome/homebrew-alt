@@ -8,9 +8,9 @@ class Bioformats < Formula
   sha1 '875c552aea03107d5e4e9b55320b0abf5918effa'
 
   devel do
-    url 'https://github.com/openmicroscopy/bioformats/archive/v5.0.0-rc1.tar.gz'
-    version '5.0.0-rc1'
-    sha1 '56d0cfad860bc20021b21e18c1bc4e635ba71ce8'
+    url 'https://github.com/openmicroscopy/bioformats/archive/v5.0.0-rc2.tar.gz'
+    version '5.0.0-rc2'
+    sha1 '5029a721925a990692163a9bfd3cdf6b49be2fd0'
   end
 
   depends_on :python if build.devel?
@@ -21,7 +21,11 @@ class Bioformats < Formula
     # build generates a version number with 'git show' command
     # but Homebrew build runs in temp copy created via git checkout-index,
     # so 'git show' does not work.
-    DATA if not (build.head? or build.devel?)
+    if build.devel?
+      {:p1 => "https://gist.github.com/sbesson/8973435/raw/000c0cf3fb85c7f4d622fdcdd87917bd9daaa379/version.xml.patch"}
+    elsif not build.head?
+      DATA if not (build.head? or build.devel?)
+    end
   end
 
   def install
