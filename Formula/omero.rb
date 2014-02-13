@@ -7,8 +7,8 @@ class Omero < Formula
   url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.10'
 
   devel do
-    url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.5.0.0-rc1'
-    version '5.0.0-rc1'
+    url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.5.0.0-rc2'
+    version '5.0.0-rc2'
   end
 
   option 'with-cpp', 'Build OmeroCpp libraries.'
@@ -61,7 +61,7 @@ class Omero < Formula
     # but Homebrew build runs in temp copy created via git checkout-index,
     # so 'git describe' does not work.
     if build.devel?
-      {:p1 => "https://gist.github.com/sbesson/8783502/raw/353f5de3f11d1b0da58a7a7f6413d3ad0aa1fb08/build.xml.patch"}
+      {:p1 => "https://gist.github.com/sbesson/8783502/raw/238308f460a826fb6bcb85cf6bf371af7d2f316d/build.xml.patch"}
     elsif not build.head?
       DATA
     end
