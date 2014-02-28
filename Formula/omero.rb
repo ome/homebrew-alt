@@ -3,13 +3,8 @@ require 'formula'
 class Omero < Formula
   homepage 'http://www.openmicroscopy.org/site/products/omero'
 
-  head 'https://github.com/openmicroscopy/openmicroscopy.git', :branch => 'dev_4_4'
-  url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.10'
-
-  devel do
-    url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.5.0.0-rc2'
-    version '5.0.0-rc2'
-  end
+  url 'http://downloads.openmicroscopy.org/omero/5.0.0/artifacts/openmicroscopy-5.0.0.zip'
+  sha1 '0f4f55289e01c3e79fdf98823109672ffd5c4ff6'
 
   option 'with-cpp', 'Build OmeroCpp libraries.'
   option 'with-ice33', 'Use Ice 3.3.'
@@ -25,7 +20,7 @@ class Omero < Formula
   depends_on 'zeroc-ice34' => 'with-python' if build.with? 'ice34'
   depends_on 'zeroc-ice33' if build.with? 'ice33'
   depends_on 'mplayer' => :recommended
-  depends_on 'genshi' => :python if build.devel?
+  depends_on 'genshi' => :python
 
   def install
     # Create config file to specify dist.dir (see #9203)
@@ -60,11 +55,7 @@ class Omero < Formula
     # build generates a version number with 'git describe' command
     # but Homebrew build runs in temp copy created via git checkout-index,
     # so 'git describe' does not work.
-    if build.devel?
-      {:p1 => "https://gist.github.com/sbesson/8783502/raw/238308f460a826fb6bcb85cf6bf371af7d2f316d/build.xml.patch"}
-    elsif not build.head?
-      DATA
-    end
+    DATA
   end
 
   def ice_prefix
@@ -96,29 +87,21 @@ class Omero < Formula
   end
 
   def test
-    mktemp do
-      (Pathname.pwd/'test.py').write <<-EOS.undent
-        #!/usr/bin/env python
-        import Ice
-        EOS
-
-      system "python", "test.py"
-    end
+    system "omero", "version"
   end
 end
 
 __END__
-diff --git a/build.xml b/build.xml
-index efa9e62..976df1a 100644
---- a/build.xml
-+++ b/build.xml
-@@ -1036,7 +1036,7 @@ omero.version=${omero.version}
-                 <propertyregex property="version.describe" input="${fullversion}" regexp="@{regexp}" select="@{select}"/>
-             </try>
-             <catch>
--                <echo>UNKNOWN</echo>
-+                <echo>4.4.10</echo>
-             </catch>
-         </trycatch>
-         </sequential>
-
+diff --git a/components/bioformats/ant/gitversion.xml b/components/bioformats/ant/gitversion.xml
+new file mode 100644
+index 0000000..ff40ea9
+--- /dev/null
++++ b/components/bioformats/ant/gitversion.xml
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="utf-8"?>
++<project name="gitversion" basedir=".">
++        <property name="release.version" value="5.0.0"/>
++        <property name="release.shortversion" value="5.0.0"/>
++        <property name="vcs.revision" value="cd2a5db"/>
++        <property name="vcs.date" value="Mon Feb 24 08:26:05 2014 -0600"/>
++</project>
