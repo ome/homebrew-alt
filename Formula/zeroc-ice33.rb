@@ -20,8 +20,8 @@ class ZerocIce33 < Formula
     share.mkpath
     ln_s prefix+"slice", share
 
-    bdb46 = Formula.factory('berkeley-db46')
-    mcpp = Formula.factory('mcpp')
+    bdb46 = Formula['berkeley-db46']
+    mcpp = Formula['mcpp']
 
     system "cd cpp && make MCPP_HOME=#{mcpp.prefix} DB_HOME=#{bdb46.prefix} OPTIMIZE=yes prefix=#{prefix} embedded_runpath_prefix=#{prefix} install"
 
