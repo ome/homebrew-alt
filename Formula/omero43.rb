@@ -30,7 +30,7 @@ class Omero43 < Formula
     ohai "Linking zeroc libaries"
     python = lib+"python"
 
-    zeroc = Formula.factory('zeroc-ice33')
+    zeroc = Formula['zeroc-ice33']
     zp = zeroc.prefix+"python"
     zp.cd { Dir["*"].each {|p| ln_sf zp + p, python + File.basename(p) }}
 

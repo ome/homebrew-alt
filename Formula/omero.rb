@@ -60,11 +60,12 @@ class Omero < Formula
 
   def ice_prefix
     if build.with? 'ice33'
-      Formula.factory('zeroc-ice33').opt_prefix
+      Formula['zeroc-ice33'].opt_prefix
     elsif build.with? 'ice34'
-      Formula.factory('zeroc-ice34').opt_prefix
+      Formula['zeroc-ice34'].opt_prefix
     else
-      Formula.factory('ice').opt_prefix
+      Formula[
+        'ice'].opt_prefix
     end
   end
 
