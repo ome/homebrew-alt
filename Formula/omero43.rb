@@ -14,7 +14,7 @@ class Omero43 < Formula
 
   def install
     args = ["./build.py", "-Dice.home=#{HOMEBREW_PREFIX}", "-Ddist.dir=#{prefix}"]
-    if build.include? 'with-cpp'
+    if build.with? 'cpp'
         args << 'build-all'
     else
         args << 'build-default'

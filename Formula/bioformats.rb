@@ -18,7 +18,7 @@ class Bioformats < Formula
     rm Dir["tools/*.bat"]
 
     # Copy artifacts
-    bin.install Dir["artifacts/bioformats_package.jar"]
+    bin.install "artifacts/bioformats_package.jar"
 
     # Copy command line-tools
     bin.install Dir["tools/*"]
