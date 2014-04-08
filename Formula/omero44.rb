@@ -15,7 +15,7 @@ class Omero44 < Formula
   depends_on 'pkg-config' => :build
   depends_on 'hdf5'
   depends_on 'jpeg'
-  depends_on 'ice' unless build.with? 'ice33' or build.with? 'ice34'
+  depends_on 'ice' if build.without? 'ice33' and build.without? 'ice34'
   depends_on 'zeroc-ice34' => 'with-python' if build.with? 'ice34'
   depends_on 'zeroc-ice33' if build.with? 'ice33'
   depends_on 'mplayer' => :recommended
@@ -24,7 +24,7 @@ class Omero44 < Formula
     # Create config file to specify dist.dir (see #9203)
     (Pathname.pwd/"etc/local.properties").write config_file
 
-    unless build.with? 'ice33' or build.with? 'ice34'
+    if build.without? 'ice33' and build.without? 'ice34'
        ENV['SLICEPATH'] = "#{HOMEBREW_PREFIX}/share/Ice-3.5/slice"
     end
     args = ["./build.py", "-Dice.home=#{ice_prefix}"]

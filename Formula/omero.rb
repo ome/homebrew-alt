@@ -3,8 +3,8 @@ require 'formula'
 class Omero < Formula
   homepage 'http://www.openmicroscopy.org/site/products/omero'
 
-  url 'http://downloads.openmicroscopy.org/omero/5.0.0/artifacts/openmicroscopy-5.0.0.zip'
-  sha1 '0f4f55289e01c3e79fdf98823109672ffd5c4ff6'
+  url 'http://downloads.openmicroscopy.org/omero/5.0.1/artifacts/openmicroscopy-5.0.1.zip'
+  sha1 '8c5fe6032953db97a42ad35d4fb06e7f9516670d'
 
   option 'with-cpp', 'Build OmeroCpp libraries.'
   option 'with-ice33', 'Use Ice 3.3.'
@@ -16,7 +16,7 @@ class Omero < Formula
   depends_on 'pkg-config' => :build
   depends_on 'hdf5'
   depends_on 'jpeg'
-  depends_on 'ice' unless build.with? 'ice33' or build.with? 'ice34'
+  depends_on 'ice' if build.without? 'ice33' and build.without? 'ice34'
   depends_on 'zeroc-ice34' => 'with-python' if build.with? 'ice34'
   depends_on 'zeroc-ice33' if build.with? 'ice33'
   depends_on 'mplayer' => :recommended
@@ -26,7 +26,7 @@ class Omero < Formula
     # Create config file to specify dist.dir (see #9203)
     (Pathname.pwd/"etc/local.properties").write config_file
 
-    unless build.with? 'ice33' or build.with? 'ice34'
+    if build.without? 'ice33' and build.without? 'ice34'
        ENV['SLICEPATH'] = "#{HOMEBREW_PREFIX}/share/Ice-3.5/slice"
     end
     args = ["./build.py", "-Dice.home=#{ice_prefix}"]
@@ -101,8 +101,8 @@ index 0000000..ff40ea9
 @@ -0,0 +1,7 @@
 +<?xml version="1.0" encoding="utf-8"?>
 +<project name="gitversion" basedir=".">
-+        <property name="release.version" value="5.0.0"/>
-+        <property name="release.shortversion" value="5.0.0"/>
-+        <property name="vcs.revision" value="cd2a5db"/>
-+        <property name="vcs.date" value="Mon Feb 24 08:26:05 2014 -0600"/>
++        <property name="release.version" value="5.0.1"/>
++        <property name="release.shortversion" value="5.0.1"/>
++        <property name="vcs.revision" value="b5a33fe"/>
++        <property name="vcs.date" value="Thu Apr 3 14:00:09 2014 -0500"/>
 +</project>

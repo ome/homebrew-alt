@@ -18,7 +18,7 @@ class Bioformats44 < Formula
   def install
     # Build libraries
     args = ["ant", "clean" ,"tools", "utils"]
-    if not build.include? 'without-ome-tools'
+    if build.with? 'ome-tools'
         args << 'tools-ome'
     end
     system *args
@@ -27,10 +27,10 @@ class Bioformats44 < Formula
     rm Dir["tools/*.bat"]
 
     # Copy artifacts
-    bin.install Dir["artifacts/loci_tools.jar"]
-    if not build.include? 'without-ome-tools'
-      bin.install Dir["artifacts/ome_tools.jar"]
-      bin.install Dir["artifacts/ome-io.jar"]
+    bin.install "artifacts/loci_tools.jar"
+    if build.with? 'ome-tools'
+      bin.install "artifacts/ome_tools.jar"
+      bin.install "artifacts/ome-io.jar"
     end
 
     # Copy command line-tools
