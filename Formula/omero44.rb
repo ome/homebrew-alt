@@ -15,7 +15,7 @@ class Omero44 < Formula
   depends_on 'pkg-config' => :build
   depends_on 'hdf5'
   depends_on 'jpeg'
-  depends_on 'ice' if build.without? 'ice33' and build.without? 'ice34'
+  depends_on 'ice' => 'with-python' if build.without? 'ice33' and build.without? 'ice34'
   depends_on 'zeroc-ice34' => 'with-python' if build.with? 'ice34'
   depends_on 'zeroc-ice33' if build.with? 'ice33'
   depends_on 'mplayer' => :recommended
