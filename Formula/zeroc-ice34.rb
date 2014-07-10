@@ -2,8 +2,7 @@ require 'formula'
 
 class ZerocIce34 < Formula
 
-  url 'http://www.zeroc.com/download/Ice/3.4/Ice-3.4.2.tar.gz'
-  sha1 '8c84d6e3b227f583d05e08251e07047e6c3a6b42'
+  url 'https://github.com/sbesson/zeroc-ice.git', :branch => '342_109'
   homepage 'http://www.zeroc.com'
 
   depends_on 'berkeley-db46' => '--without-java'
@@ -12,9 +11,7 @@ class ZerocIce34 < Formula
   # other dependencies listed for Ice are for additional utilities not compiled
 
   def patches
-    { # Patch for Ice-3.4.2 to compile with clang
-      :p0 => "http://www.zeroc.com/forums/attachments/patches/973d1330948195-patch-compiling-ice-clang-gcc4-7-ice_for_clang_2012-03-05.txt",
-     # Inline Patch
+    {# Inline Patch
      #  * for Ice-3.4.2 to work with Berkeley DB 5.X rather than 4.X
      #  * for Ice-3.4.2 to compile with JDK-7
      #    See http://www.zeroc.com/forums/help-center/5561-java-7-support.html
