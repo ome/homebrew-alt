@@ -6,7 +6,8 @@ class Bioformats < Formula
   url 'http://downloads.openmicroscopy.org/bio-formats/5.0.2/artifacts/bioformats-5.0.2.zip'
   sha1 '2b286741dec8a7b8ec4244f60aef410c07973194'
 
-  depends_on :python
+  depends_on :python => :build
+  depends_on :ant => :build
   depends_on 'genshi' => :python
 
   def install
