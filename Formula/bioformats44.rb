@@ -8,6 +8,7 @@ class Bioformats44 < Formula
 
   option 'without-ome-tools', 'Do not build OME Tools.'
 
+  depends_on :ant => :build
   # build generates a version number with 'git show' command
   # but Homebrew build runs in temp copy created via git checkout-index,
   # so 'git show' does not work.
