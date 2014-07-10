@@ -63,6 +63,8 @@ class ZerocIce34 < Formula
         s.gsub! "/opt/Ice-$(VERSION_MAJOR).$(VERSION_MINOR)", prefix
       end
 
+      # Unset ICE_HOME as it interferes with the build
+      ENV.delete('ICE_HOME')
       ENV["PYTHON_HOME"] = Pathname.new `python-config --prefix`.chomp
       Dir.chdir "py" do
         system "make"
