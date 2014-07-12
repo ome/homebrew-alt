@@ -10,13 +10,11 @@ class ZerocIce34 < Formula
   depends_on :python
   # other dependencies listed for Ice are for additional utilities not compiled
 
-  def patches
-    {# Inline Patch
-     #  * for Ice-3.4.2 to work with Berkeley DB 5.X rather than 4.X
-     #  * for Ice-3.4.2 to compile with JDK-7
-     #    See http://www.zeroc.com/forums/help-center/5561-java-7-support.html
-     :p1 => DATA}
-  end
+  # Inline Patch
+  #  * for Ice-3.4.2 to work with Berkeley DB 5.X rather than 4.X
+  #  * for Ice-3.4.2 to compile with JDK-7
+  #    See http://www.zeroc.com/forums/help-center/5561-java-7-support.html
+  patch :DATA
 
   option 'doc', 'Install documentation'
   option 'demo', 'Build demos'
