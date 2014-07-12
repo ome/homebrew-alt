@@ -8,6 +8,7 @@ class ZerocIce34 < Formula
   depends_on 'berkeley-db46' => '--without-java'
   depends_on 'mcpp'
   depends_on :python
+  depends_on :ant  => :build if build.with? 'java'
   # other dependencies listed for Ice are for additional utilities not compiled
 
   # Inline Patch
