@@ -5,10 +5,15 @@ class ZerocIce34 < Formula
   url 'https://github.com/sbesson/zeroc-ice.git', :branch => '342_109'
   homepage 'http://www.zeroc.com'
 
+  option 'doc', 'Install documentation'
+  option 'demo', 'Build demos'
+  option 'with-java', 'Build Java library'
+  option 'with-python', 'Build Python library'
+
   depends_on 'berkeley-db46' => '--without-java'
   depends_on 'mcpp'
   depends_on :python
-  depends_on :ant  => :build
+  depends_on :ant => :build if build.with? 'java'
   # other dependencies listed for Ice are for additional utilities not compiled
 
   # Inline Patch
@@ -16,11 +21,6 @@ class ZerocIce34 < Formula
   #  * for Ice-3.4.2 to compile with JDK-7
   #    See http://www.zeroc.com/forums/help-center/5561-java-7-support.html
   patch :DATA
-
-  option 'doc', 'Install documentation'
-  option 'demo', 'Build demos'
-  option 'with-java', 'Build Java library'
-  option 'with-python', 'Build Python library'
 
   def install
     ENV.O2
