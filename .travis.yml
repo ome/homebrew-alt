@@ -4,7 +4,6 @@ matrix:
 env:
   - FORMULA=bioformats44 BREW_OPTS=
   - FORMULA=bioformats BREW_OPTS=
-  - FORMULA=zeroc-ice33 BREW_OPTS=
   - FORMULA=zeroc-ice34 BREW_OPTS=
   - FORMULA=zeroc-ice34 BREW_OPTS=--with-python
   - FORMULA=zeroc-ice34 BREW_OPTS=--with-java
