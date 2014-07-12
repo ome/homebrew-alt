@@ -8,6 +8,7 @@ env:
 before_script:
     - brew update
     - brew tap ome/alt
+    - brew tap homebrew/science
     - brew audit Formula/*.rb
 script:
     - VERBOSE=1 brew install Formula/$FORMULA.rb $BREW_OPTS
