@@ -2,7 +2,8 @@ require 'formula'
 
 class ZerocIce34 < Formula
 
-  url 'https://github.com/sbesson/zeroc-ice.git', :branch => '342_109'
+  url 'http://www.zeroc.com/download/Ice/3.4/Ice-3.4.2.tar.gz'
+  sha1 '8c84d6e3b227f583d05e08251e07047e6c3a6b42'
   homepage 'http://www.zeroc.com'
 
   option 'doc', 'Install documentation'
@@ -21,6 +22,19 @@ class ZerocIce34 < Formula
   #  * for Ice-3.4.2 to compile with JDK-7
   #    See http://www.zeroc.com/forums/help-center/5561-java-7-support.html
   patch :DATA
+
+  # Patch for Ice-3.4.2 to compile with clang
+  patch :p0 do
+    url "http://www.zeroc.com/forums/attachments/patches/973d1330948195-patch-compiling-ice-clang-gcc4-7-ice_for_clang_2012-03-05.txt"
+    sha1 'e5be6c507bf7b0b143de46d256fe8664a880aa57'
+  end
+
+  # Patch for Ice-3.4.2 to compile under OSX Mavericks
+  #See http://trac.macports.org//ticket/42459
+  patch :p1 do
+    url "https://github.com/sbesson/zeroc-ice/commit/ed8542e692.diff"
+    sha1 'b8b941bbe1d5132c77f4e32cde438fa67509ede5'
+  end if MacOS.version == :mavericks
 
   def install
     ENV.O2
