@@ -32,7 +32,7 @@ class ZerocIce34 < Formula
   # Patch for Ice-3.4.2 to compile under OSX Mavericks
   #See http://trac.macports.org//ticket/42459
   patch :p1 do
-    url "https://github.com/sbesson/zeroc-ice/commit/ed8542e692.diff"
+    url "https://github.com/ome/zeroc-ice/commit/ed8542e692.diff"
     sha1 'b8b941bbe1d5132c77f4e32cde438fa67509ede5'
   end if MacOS.version == :mavericks
 
