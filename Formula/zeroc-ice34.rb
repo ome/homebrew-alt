@@ -6,25 +6,35 @@ class ZerocIce34 < Formula
   sha1 '8c84d6e3b227f583d05e08251e07047e6c3a6b42'
   homepage 'http://www.zeroc.com'
 
-  depends_on 'berkeley-db46' => '--without-java'
-  depends_on 'mcpp'
-  depends_on :python
-  # other dependencies listed for Ice are for additional utilities not compiled
-
-  def patches
-    { # Patch for Ice-3.4.2 to compile with clang
-      :p0 => "http://www.zeroc.com/forums/attachments/patches/973d1330948195-patch-compiling-ice-clang-gcc4-7-ice_for_clang_2012-03-05.txt",
-     # Inline Patch
-     #  * for Ice-3.4.2 to work with Berkeley DB 5.X rather than 4.X
-     #  * for Ice-3.4.2 to compile with JDK-7
-     #    See http://www.zeroc.com/forums/help-center/5561-java-7-support.html
-     :p1 => DATA}
-  end
-
   option 'doc', 'Install documentation'
   option 'demo', 'Build demos'
   option 'with-java', 'Build Java library'
   option 'with-python', 'Build Python library'
+
+  depends_on 'berkeley-db46' => '--without-java'
+  depends_on 'mcpp'
+  depends_on :python
+  depends_on :ant => :build if build.with? 'java'
+  # other dependencies listed for Ice are for additional utilities not compiled
+
+  # Inline Patch
+  #  * for Ice-3.4.2 to work with Berkeley DB 5.X rather than 4.X
+  #  * for Ice-3.4.2 to compile with JDK-7
+  #    See http://www.zeroc.com/forums/help-center/5561-java-7-support.html
+  patch :DATA
+
+  # Patch for Ice-3.4.2 to compile with clang
+  patch :p0 do
+    url "http://www.zeroc.com/forums/attachments/patches/973d1330948195-patch-compiling-ice-clang-gcc4-7-ice_for_clang_2012-03-05.txt"
+    sha1 'e5be6c507bf7b0b143de46d256fe8664a880aa57'
+  end
+
+  # Patch for Ice-3.4.2 to compile under OSX Mavericks
+  #See http://trac.macports.org//ticket/42459
+  patch :p1 do
+    url "https://github.com/ome/zeroc-ice/commit/ed8542e692.diff"
+    sha1 'b8b941bbe1d5132c77f4e32cde438fa67509ede5'
+  end if MacOS.version == :mavericks
 
   def install
     ENV.O2
@@ -66,6 +76,8 @@ class ZerocIce34 < Formula
         s.gsub! "/opt/Ice-$(VERSION_MAJOR).$(VERSION_MINOR)", prefix
       end
 
+      # Unset ICE_HOME as it interferes with the build
+      ENV.delete('ICE_HOME')
       ENV["PYTHON_HOME"] = Pathname.new `python-config --prefix`.chomp
       Dir.chdir "py" do
         system "make"

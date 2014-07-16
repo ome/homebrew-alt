@@ -8,12 +8,11 @@ class Bioformats44 < Formula
 
   option 'without-ome-tools', 'Do not build OME Tools.'
 
-  def patches
-    # build generates a version number with 'git show' command
-    # but Homebrew build runs in temp copy created via git checkout-index,
-    # so 'git show' does not work.
-    DATA
-  end
+  depends_on :ant => :build
+  # build generates a version number with 'git show' command
+  # but Homebrew build runs in temp copy created via git checkout-index,
+  # so 'git show' does not work.
+  patch :DATA
 
   def install
     # Build libraries

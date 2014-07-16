@@ -2,15 +2,10 @@ language: objective-c
 matrix:
   fast_finish: true
 env:
-  - FORMULA=bioformats44 BREW_OPTS=
-  - FORMULA=bioformats BREW_OPTS=
-  - FORMULA=zeroc-ice33 BREW_OPTS=
   - FORMULA=zeroc-ice34 BREW_OPTS=
   - FORMULA=zeroc-ice34 BREW_OPTS=--with-python
   - FORMULA=zeroc-ice34 BREW_OPTS=--with-java
 before_script:
-    - sudo easy_install pip
-    - sudo pip install genshi --no-use-wheel
     - brew update
     - brew tap ome/alt
     - brew tap homebrew/science

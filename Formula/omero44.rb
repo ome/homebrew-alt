@@ -49,12 +49,10 @@ class Omero44 < Formula
     EOF
   end
 
-  def patches
-    # build generates a version number with 'git describe' command
-    # but Homebrew build runs in temp copy created via git checkout-index,
-    # so 'git describe' does not work.
-    DATA
-  end
+  # build generates a version number with 'git describe' command
+  # but Homebrew build runs in temp copy created via git checkout-index,
+  # so 'git describe' does not work.
+  patch :DATA
 
   def ice_prefix
     if build.with? 'ice33'
