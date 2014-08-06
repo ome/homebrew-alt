@@ -82,7 +82,7 @@ class Omero44 < Formula
     return s
   end
 
-  def test
+  test do
     mktemp do
       (Pathname.pwd/'test.py').write <<-EOS.undent
         #!/usr/bin/env python

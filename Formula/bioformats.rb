@@ -24,7 +24,7 @@ class Bioformats < Formula
     # Copy command line-tools
     bin.install Dir["tools/*"]
   end
-  def test
+  test do
     system "showinf", "-version"
   end
 end

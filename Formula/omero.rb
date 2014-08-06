@@ -85,7 +85,7 @@ class Omero < Formula
     return s
   end
 
-  def test
+  test do
     system "omero", "version"
   end
 end
