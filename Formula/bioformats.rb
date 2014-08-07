@@ -3,8 +3,8 @@ require 'formula'
 class Bioformats < Formula
   homepage 'http://www.openmicroscopy.org/site/products/bio-formats'
 
-  url 'http://downloads.openmicroscopy.org/bio-formats/5.0.2/artifacts/bioformats-5.0.2.zip'
-  sha1 '2b286741dec8a7b8ec4244f60aef410c07973194'
+  url 'http://downloads.openmicroscopy.org/bio-formats/5.0.3/artifacts/bioformats-5.0.3.zip'
+  sha1 'a9607e9d8b975061a8f763b8831a36d96d2ebaec'
 
   depends_on :python => :build
   depends_on :ant => :build
@@ -24,7 +24,7 @@ class Bioformats < Formula
     # Copy command line-tools
     bin.install Dir["tools/*"]
   end
-  def test
+  test do
     system "showinf", "-version"
   end
 end

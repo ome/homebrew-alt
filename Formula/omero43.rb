@@ -44,7 +44,7 @@ class Omero43 < Formula
     EOS
   end
 
-  def test
+  test do
     mktemp do
       (Pathname.pwd/'test.py').write <<-EOS.undent
         #!/usr/bin/env python

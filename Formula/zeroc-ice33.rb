@@ -40,7 +40,7 @@ class ZerocIce33 < Formula
     See http://www.zeroc.com/forums/help-center/4467-couldnt-compile-icephp-ice-3-3-1-php-5-3-0-a.html
     EOS
   end
-  def test
+  test do
     system "slice2java", "--version"
   end
 end
