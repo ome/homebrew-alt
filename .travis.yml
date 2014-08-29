@@ -12,5 +12,6 @@ before_script:
     - brew tap homebrew/science
     - brew audit Formula/*.rb
 script:
+    - if [[ $FORMULA == 'omero' ]]; then pip install Genshi; fi
     - VERBOSE=1 brew install Formula/$FORMULA.rb $BREW_OPTS
-    - brew test Formula/$FORMULA.rb
+    - if [[ $FORMULA != 'omero' ]]; then brew test Formula/$FORMULA.rb; fi
