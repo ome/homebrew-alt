@@ -5,6 +5,7 @@ env:
   - FORMULA=zeroc-ice34 BREW_OPTS=
   - FORMULA=zeroc-ice34 BREW_OPTS=--with-python
   - FORMULA=zeroc-ice34 BREW_OPTS=--with-java
+  - FORMULA=omero BREW_OPTS=--only-dependencies
 before_script:
     - brew update
     - brew tap ome/alt
