@@ -5,11 +5,13 @@ env:
   - FORMULA=zeroc-ice34 BREW_OPTS=
   - FORMULA=zeroc-ice34 BREW_OPTS=--with-python
   - FORMULA=zeroc-ice34 BREW_OPTS=--with-java
+  - FORMULA=omero BREW_OPTS=--only-dependencies
 before_script:
     - brew update
     - brew tap ome/alt
     - brew tap homebrew/science
     - brew audit Formula/*.rb
 script:
+    - if [[ $FORMULA == 'omero' ]]; then sudo pip install Genshi; fi
     - VERBOSE=1 brew install Formula/$FORMULA.rb $BREW_OPTS
-    - brew test Formula/$FORMULA.rb
+    - if [[ $FORMULA != 'omero' ]]; then brew test Formula/$FORMULA.rb; fi
