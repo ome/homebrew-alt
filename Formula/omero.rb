@@ -3,8 +3,8 @@ require 'formula'
 class Omero < Formula
   homepage 'http://www.openmicroscopy.org/site/products/omero'
 
-  url 'http://downloads.openmicroscopy.org/omero/5.0.4/artifacts/openmicroscopy-5.0.4.zip'
-  sha1 '23d232aa08b4dce707036034977974bc88610166'
+  url 'http://downloads.openmicroscopy.org/omero/5.0.5/artifacts/openmicroscopy-5.0.5.zip'
+  sha1 'f1ad7d0c9b76fbed9811ae07808c0c51b334fa36'
 
   option 'with-cpp', 'Build OmeroCpp libraries.'
   option 'with-ice33', 'Use Ice 3.3.'
@@ -100,8 +100,8 @@ index 0000000..ff40ea9
 @@ -0,0 +1,7 @@
 +<?xml version="1.0" encoding="utf-8"?>
 +<project name="gitversion" basedir=".">
-+        <property name="release.version" value="5.0.4"/>
-+        <property name="release.shortversion" value="5.0.4"/>
-+        <property name="vcs.revision" value="a7c8d26"/>
-+        <property name="vcs.date" value="Mon Sep 1 16:30:18 2014 +0100"/>
++        <property name="release.version" value="5.0.5"/>
++        <property name="release.shortversion" value="5.0.5"/>
++        <property name="vcs.revision" value="f58463b"/>
++        <property name="vcs.date" value="Mon Sep 22 08:48:24 2014 -0500"/>
 +</project>
