@@ -23,7 +23,9 @@ class ZerocIce33 < Formula
     bdb46 = Formula['berkeley-db46']
     mcpp = Formula['mcpp']
 
-    system "cd cpp && make MCPP_HOME=#{mcpp.prefix} DB_HOME=#{bdb46.prefix} OPTIMIZE=yes prefix=#{prefix} embedded_runpath_prefix=#{prefix} install"
+    cd "rb" do
+      system "make MCPP_HOME=#{mcpp.prefix} DB_HOME=#{bdb46.prefix} OPTIMIZE=yes prefix=#{prefix} embedded_runpath_prefix=#{prefix} install"
+    end
 
     ENV["ICE_HOME"] = "#{prefix}"
     ENV["PYTHON_HOME"] = Pathname.new `python-config --prefix`.chomp
