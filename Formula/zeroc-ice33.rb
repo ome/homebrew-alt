@@ -27,8 +27,12 @@ class ZerocIce33 < Formula
 
     ENV["ICE_HOME"] = "#{prefix}"
     ENV["PYTHON_HOME"] = Pathname.new `python-config --prefix`.chomp
-    system "cd rb && make OPTIMIZE=yes prefix=#{prefix} embedded_runpath_prefix=#{prefix} install"
-    system "cd py && make OPTIMIZE=yes prefix=#{prefix} embedded_runpath_prefix=#{prefix} install"
+    cd "rb" do
+      system "make OPTIMIZE=yes prefix=#{prefix} embedded_runpath_prefix=#{prefix} install"
+    end
+    cd "py" do
+      system "make OPTIMIZE=yes prefix=#{prefix} embedded_runpath_prefix=#{prefix} install"
+    end
 
   end
 
