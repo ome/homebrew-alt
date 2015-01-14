@@ -13,20 +13,21 @@ def get_files_diff(file1, file2):
         f2 = f.read().splitlines(1)
 
     d = difflib.Differ()
-    r = d.compare(f1, f2)
-    return ([l for l in r if l.startswith('-')],
-            [l for l in r if l.startswith('+')])
+    difflines = [l for l in d.compare(f1, f2)]
+    return ([l for l in difflines if l.startswith('-')],
+            [l for l in difflines if l.startswith('+')])
 
 
 def get_expected_diff(formula, version):
 
     uppercase_formula = formula[0].upper() + formula[1:]
     return (['- class %s%s < Formula\n' % (uppercase_formula, version)],
-            ['- class %s < Formula\n' % uppercase_formula])
+            ['+ class %s < Formula\n' % uppercase_formula])
 
 
 for formula in ['omero', 'bioformats']:
     file1 = 'Formula/%s%s.rb' % (formula, version)
     file2 = 'Formula/%s.rb' % formula
     difflines = get_files_diff(file1, file2)
+    print 'Comparing %s and %s' % (file1, file2)
     assert difflines == get_expected_diff(formula, version)
