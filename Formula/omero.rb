@@ -20,7 +20,6 @@ class Omero < Formula
   depends_on 'zeroc-ice34' => 'with-python' if build.with? 'ice34'
   depends_on 'zeroc-ice33' if build.with? 'ice33'
   depends_on 'mplayer' => :recommended
-  depends_on 'genshi' => :python
   depends_on 'nginx' => :optional
 
   def install
