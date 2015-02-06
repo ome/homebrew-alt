@@ -3,8 +3,8 @@ require 'formula'
 class Omero50 < Formula
   homepage 'http://www.openmicroscopy.org/site/products/omero'
 
-  url 'http://downloads.openmicroscopy.org/omero/5.0.6/artifacts/openmicroscopy-5.0.6.zip'
-  sha1 '2b59748183b6d8e17942898ad28c559b70429932'
+  url 'http://downloads.openmicroscopy.org/omero/5.0.7/artifacts/openmicroscopy-5.0.7.zip'
+  sha1 'e5cd00ce00b0b76eb33afb3422d65da49dd7954a'
 
   option 'with-cpp', 'Build OmeroCpp libraries.'
   option 'with-ice33', 'Use Ice 3.3.'
@@ -20,7 +20,6 @@ class Omero50 < Formula
   depends_on 'zeroc-ice34' => 'with-python' if build.with? 'ice34'
   depends_on 'zeroc-ice33' if build.with? 'ice33'
   depends_on 'mplayer' => :recommended
-  depends_on 'genshi' => :python
   depends_on 'nginx' => :optional
 
   def install
@@ -100,10 +99,8 @@ index 0000000..ff40ea9
 @@ -0,0 +1,7 @@
 +<?xml version="1.0" encoding="utf-8"?>
 +<project name="gitversion" basedir=".">
-+        <property name="release.version" value="5.0.6"/>
-+        <property name="release.shortversion" value="5.0.6"/>
-+        <property name="vcs.revision" value="33b1150"/>
-+        <property name="vcs.date" value="Mon Nov 10 15:43:40 2014 +0000"/>
++        <property name="release.version" value="5.0.7"/>
++        <property name="release.shortversion" value="5.0.7"/>
++        <property name="vcs.revision" value="274796b"/>
++        <property name="vcs.date" value="Tue Feb 3 10:27:00 2015 +0000"/>
 +</project>
-
-
