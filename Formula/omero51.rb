@@ -3,8 +3,8 @@ require 'formula'
 class Omero51 < Formula
   homepage 'http://www.openmicroscopy.org/site/products/omero'
 
-  url 'http://downloads.openmicroscopy.org/omero/5.1.0-m3/artifacts/openmicroscopy-5.1.0-m3.zip'
-  sha1 '431b1df079a9bf4fa95dcb4e4a0fc673e11a6f45'
+  url 'http://downloads.openmicroscopy.org/omero/5.1.0-m4/artifacts/openmicroscopy-5.1.0-m4.zip'
+  sha1 'c9f47c57b54266d184b5d1782d5d03d7960f8cad'
 
   option 'with-cpp', 'Build OmeroCpp libraries.'
   option 'with-ice34', 'Use Ice 3.4.'
@@ -50,11 +50,6 @@ class Omero51 < Formula
     EOF
   end
 
-  # build generates a version number with 'git describe' command
-  # but Homebrew build runs in temp copy created via git checkout-index,
-  # so 'git describe' does not work.
-  patch :DATA
-
   def ice_prefix
     if build.with? 'ice34'
       Formula['zeroc-ice34'].opt_prefix
@@ -86,21 +81,3 @@ class Omero51 < Formula
     system "omero", "version"
   end
 end
-
-__END__
-diff --git a/components/bioformats/ant/gitversion.xml b/components/bioformats/ant/gitversion.xml
-new file mode 100644
-index 0000000..ff40ea9
---- /dev/null
-+++ b/components/bioformats/ant/gitversion.xml
-@@ -0,0 +1,7 @@
-+<?xml version="1.0" encoding="utf-8"?>
-+<project name="gitversion" basedir=".">
-+        <property name="release.version" value="5.1.0-m3"/>
-+        <property name="release.shortversion" value="5.1.0-m3"/>
-+        <property name="vcs.revision" value="b97e94a"/>
-+        <property name="vcs.date" value="2014-12-16 11:25:06 -0600"/>
-+</project>
-
-
-
