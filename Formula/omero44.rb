@@ -3,7 +3,7 @@ require 'formula'
 class Omero44 < Formula
   homepage 'http://www.openmicroscopy.org/site/products/omero'
 
-  url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.12'
+  url 'https://github.com/openmicroscopy/openmicroscopy.git', :tag => 'v.4.4.12', :revision => 'd3de2cc04209dd92d59d3e94d593b59802ae7be0'
 
   option 'with-cpp', 'Build OmeroCpp libraries.'
   option 'with-ice33', 'Use Ice 3.3.'
