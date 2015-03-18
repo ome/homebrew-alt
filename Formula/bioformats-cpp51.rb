@@ -35,15 +35,11 @@ class BioformatsCpp51 < Formula
     end
     ENV.prepend_path "PATH", "#{HOMEBREW_PREFIX}/opt/qt5/bin" if build.with? "qt5"
 
-    # Override std_cmake_args; CMAKE_BUILD_TYPE must be one of
-    # [Hybrid, Pure][Debug, Release]
     args = ["-DCMAKE_INSTALL_PREFIX=#{prefix}",
-            "-DCMAKE_BUILD_TYPE=PureRelease",
+            "-DCMAKE_BUILD_TYPE=Release",
             "-DCMAKE_VERBOSE_MAKEFILE=ON",
             "-Wno-dev"]
 
-    # Bundle tests & examples together for check because examples directory
-    # includes code that exercises Qt5 functionality (via spy plots)
     args << "-Dtest=OFF" if build.without? "check"
 
     mkdir "build" do
@@ -51,7 +47,6 @@ class BioformatsCpp51 < Formula
       system "make"
 
       if build.with? "check"
-        # Basic smoke test of build for now
         system "ctest", "-V"
       end
 
