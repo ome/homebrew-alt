@@ -3,11 +3,12 @@ require 'formula'
 class Bioformats < Formula
   homepage 'http://www.openmicroscopy.org/site/products/bio-formats'
 
-  url 'http://downloads.openmicroscopy.org/bio-formats/5.0.8/artifacts/bioformats-5.0.8.zip'
-  sha1 'db677a8406ca12daaa5eed98b3a8368df722e770'
+  url 'http://downloads.openmicroscopy.org/bio-formats/5.1.0/artifacts/bioformats-5.1.0.zip'
+  sha1 '2c6578b2ec665da23d1afd61fe776bb1eff4dbaf'
 
   depends_on :python => :build
   depends_on :ant => :build
+  depends_on 'genshi' => :python
 
   def install
     # Build libraries

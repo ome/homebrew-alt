@@ -2,7 +2,7 @@
 
 import difflib
 
-version = '50'
+version = '51'
 
 
 def get_files_diff(file1, file2):
