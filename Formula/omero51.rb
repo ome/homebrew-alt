@@ -18,7 +18,6 @@ class Omero51 < Formula
   depends_on 'ice' => 'with-python' if build.without? 'ice34'
   depends_on 'zeroc-ice34' => 'with-python' if build.with? 'ice34'
   depends_on 'mplayer' => :recommended
-  depends_on 'genshi' => :python
   depends_on 'nginx' => :optional
 
   def install

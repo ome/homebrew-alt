@@ -8,7 +8,6 @@ class Bioformats51 < Formula
 
   depends_on :python => :build
   depends_on :ant => :build
-  depends_on 'genshi' => :python
 
   def install
     # Build libraries
