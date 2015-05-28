@@ -9,16 +9,19 @@ class BioformatsCpp51 < Formula
   option "with-qt5", "Build with Qt5 (used for OpenGL image rendering)"
   option "with-docs", "Build API reference and manual pages"
 
-  depends_on "boost" => :build
+  depends_on "boost"
   depends_on "cmake" => :build
-  depends_on "libpng" => :build
-  depends_on "libtiff" => :build
-  depends_on "xerces-c" => :build
+  depends_on "libpng"
+  depends_on "libtiff"
+  depends_on "xerces-c"
   depends_on "graphicsmagick" => :optional if build.with? "check"
-  depends_on "qt5" => :build if build.with? "qt5"
+  depends_on "qt5" => :optional if build.with? "qt5"
   depends_on "glm" => :build if build.with? "qt5"
   depends_on "doxygen" => :build if build.with? "docs"
   depends_on "graphviz" => :build if build.with? "docs"
+
+  # Needs clang/libc++ toolchain; mountain lion is too broken
+  depends_on MinimumMacOSRequirement => :mavericks
 
   needs :cxx11
 
