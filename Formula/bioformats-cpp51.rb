@@ -45,11 +45,16 @@ class BioformatsCpp51 < Formula
       system "cmake", "..", *args
       system "make"
 
+      if build.with? "check"
+        system "ctest", "-V"
+      end
+
       system "make", "install"
     end
   end
 
   test do
-    system "ctest", "-V"
+    system "bf-test", "--usage"
+    system "bf-test", "info", "--usage"
   end
 end
