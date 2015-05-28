@@ -1,9 +1,8 @@
-require 'formula'
-
 class BioformatsCpp51 < Formula
+  desc "Libraries and tools for microscopy images including OME-TIFF"
   homepage "http://www.openmicroscopy.org/site/products/bio-formats"
   url "http://downloads.openmicroscopy.org/bio-formats/5.1.2/artifacts/bioformats-5.1.2.zip"
-  sha1 "b39f78ef63beb599633d34c1778239a5bfed9a88"
+  sha256 "7b92979f49434cf3e8930dcfeec6571f09f1fcb65ef5e51ecb87f16585d46186"
   head "https://github.com/openmicroscopy/bioformats.git"
 
   option "without-check", "Skip build time tests (not recommended)"
@@ -25,7 +24,7 @@ class BioformatsCpp51 < Formula
 
   resource "sphinx" do
     url "https://pypi.python.org/packages/source/S/Sphinx/Sphinx-1.2.3.tar.gz"
-    sha1 "3a11f130c63b057532ca37fe49c8967d0cbae1d5"
+    sha256 "94933b64e2fe0807da0612c574a021c0dac28c7bd3c4a23723ae5a39ea8f3d04"
   end
 
   def install
@@ -46,12 +45,11 @@ class BioformatsCpp51 < Formula
       system "cmake", "..", *args
       system "make"
 
-      if build.with? "check"
-        system "ctest", "-V"
-      end
-
       system "make", "install"
     end
   end
 
+  test do
+    system "ctest", "-V"
+  end
 end
