@@ -2,8 +2,8 @@ require 'formula'
 
 class BioformatsCpp51 < Formula
   homepage "http://www.openmicroscopy.org/site/products/bio-formats"
-  url "http://downloads.openmicroscopy.org/bio-formats/5.1.0-m4/artifacts/bioformats-5.1.0-m4.zip"
-  sha1 "07c760b9cabab022f5b90a31ffc699149ba2d014"
+  url "http://downloads.openmicroscopy.org/bio-formats/5.1.2/artifacts/bioformats-5.1.2.zip"
+  sha1 "b39f78ef63beb599633d34c1778239a5bfed9a88"
   head "https://github.com/openmicroscopy/bioformats.git"
 
   option "without-check", "Skip build time tests (not recommended)"
