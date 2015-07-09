@@ -1,6 +1,6 @@
 require 'formula'
 
-class Ice < Formula
+class ZerocIce35 < Formula
   desc "Distributed computing platform"
   homepage 'http://www.zeroc.com'
   url 'http://www.zeroc.com/download/Ice/3.5/Ice-3.5.1.tar.gz'
