@@ -15,7 +15,7 @@ class Omero51 < Formula
   depends_on 'pkg-config' => :build
   depends_on 'hdf5'
   depends_on 'jpeg'
-  depends_on 'ice' => 'with-python' if build.without? 'ice34'
+  depends_on 'zeroc-ice35' => 'with-python' if build.without? 'ice34'
   depends_on 'zeroc-ice34' => 'with-python' if build.with? 'ice34'
   depends_on 'mplayer' => :recommended
   depends_on 'nginx' => :optional
@@ -53,8 +53,7 @@ class Omero51 < Formula
     if build.with? 'ice34'
       Formula['zeroc-ice34'].opt_prefix
     else
-      Formula[
-        'ice'].opt_prefix
+      Formula['zeroc-ice35'].opt_prefix
     end
   end
 
