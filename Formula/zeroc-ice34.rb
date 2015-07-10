@@ -25,7 +25,7 @@ class ZerocIce34 < Formula
 
   # Patch for Ice-3.4.2 to compile with clang
   patch :p0 do
-    url "http://www.zeroc.com/forums/attachments/patches/973d1330948195-patch-compiling-ice-clang-gcc4-7-ice_for_clang_2012-03-05.txt"
+    url "http://downloads.openmicroscopy.org/patches/ice_for_clang_2012-03-05.txt"
     sha1 'e5be6c507bf7b0b143de46d256fe8664a880aa57'
   end
 
