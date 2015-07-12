@@ -4,7 +4,7 @@ class Bioformats44 < Formula
   homepage 'http://www.openmicroscopy.org/site/products/bio-formats'
 
   url 'https://github.com/openmicroscopy/bioformats/archive/v4.4.10.tar.gz'
-  sha1 '875c552aea03107d5e4e9b55320b0abf5918effa'
+  sha256 'a90a14ce60e7d9027c2b8e1a93e8b04d7c758950504cdb1e76a33daccc61e31e'
 
   option 'without-ome-tools', 'Do not build OME Tools.'
 

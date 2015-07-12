@@ -4,7 +4,7 @@ class ZerocIce33 < Formula
   homepage 'https://github.com/joshmoore/zeroc-ice'
 
   url 'https://github.com/joshmoore/zeroc-ice/archive/v.3.3.1-clang.tar.gz'
-  sha1 'd6bac03c32a27fe1414c519d3e6e08a2156232b6'
+  sha256 '0b406475c1cd7257a87c651b1e47b811b07be0f411b9a442e3e71e5f25372395'
   version '3.3.1'
 
   head 'https://github.com/joshmoore/zeroc-ice.git', :branch => 'Ice-3.3.1'

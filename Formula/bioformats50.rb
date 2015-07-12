@@ -4,7 +4,7 @@ class Bioformats50 < Formula
   homepage 'http://www.openmicroscopy.org/site/products/bio-formats'
 
   url 'http://downloads.openmicroscopy.org/bio-formats/5.0.8/artifacts/bioformats-5.0.8.zip'
-  sha1 'db677a8406ca12daaa5eed98b3a8368df722e770'
+  sha256 'bc059541de55b027488aa5af784c5c807d65602409d3589b6367ffdfc00653fb'
 
   depends_on :python => :build
   depends_on :ant => :build
