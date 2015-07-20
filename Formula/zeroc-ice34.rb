@@ -3,7 +3,7 @@ require 'formula'
 class ZerocIce34 < Formula
 
   url 'http://www.zeroc.com/download/Ice/3.4/Ice-3.4.2.tar.gz'
-  sha1 '8c84d6e3b227f583d05e08251e07047e6c3a6b42'
+  sha256 'dcf0484495b6df0849ec90a00e8204fe5fe1c0d3882bb438bf2c1d062f15c979'
   homepage 'http://www.zeroc.com'
 
   option 'doc', 'Install documentation'

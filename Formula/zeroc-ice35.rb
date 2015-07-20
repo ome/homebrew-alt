@@ -4,7 +4,7 @@ class ZerocIce35 < Formula
   desc "Distributed computing platform"
   homepage 'http://www.zeroc.com'
   url 'http://www.zeroc.com/download/Ice/3.5/Ice-3.5.1.tar.gz'
-  sha1 '63599ea22a1e9638a49356682c9e516b7c2c454f'
+  sha256 '989e51194c6adadbd156da3288e37bad847b93b3b876502e83033b70493af392'
   revision 1
 
   option 'doc', 'Install documentation'
@@ -12,7 +12,7 @@ class ZerocIce35 < Formula
 
   resource "berkeley-db" do
     url "http://download.oracle.com/berkeley-db/db-5.3.28.tar.gz"
-    sha1 "fa3f8a41ad5101f43d08bc0efb6241c9b6fc1ae9"
+    sha256 "e0a992d740709892e81f9d93f06daf305cf73fb81b545afe72478043172c3628"
   end
 
   depends_on "openssl"

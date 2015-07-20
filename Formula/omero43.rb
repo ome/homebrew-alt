@@ -4,7 +4,7 @@ class Omero43 < Formula
   homepage 'http://www.openmicroscopy.org/site/products/omero'
 
   url 'https://github.com/openmicroscopy/openmicroscopy/archive/v.4.3.4.tar.gz'
-  sha1 '44a90eb971a3b0f8fcba7afd41051ceb7f06cd6e'
+  sha256 '2716ab1e7265beb9706cf1fbcbefe0d9f1b2a69e9e0e564a9735fde5d5b2ef21'
 
   depends_on :python
   depends_on 'mplayer'

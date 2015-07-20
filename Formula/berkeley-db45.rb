@@ -3,7 +3,7 @@ require 'formula'
 class BerkeleyDb45 < Formula
   url 'http://download.oracle.com/berkeley-db/db-4.5.20.tar.gz'
   homepage 'http://www.oracle.com/technology/products/berkeley-db/index.html'
-  sha1 '0e5a6c152c5d7089899481d9de689d1f7e77bde1'
+  sha256 'f52cd5cea899823dd200d56556f70b33c55e48a33bb7b65ee128968dc10ca82d'
 
   keg_only "Older version"
 
