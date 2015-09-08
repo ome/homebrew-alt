@@ -14,6 +14,5 @@ before_script:
     - brew audit Formula/*.rb
     - python check_alias.py
 script:
-    - if [[ $FORMULA == 'omero' ]]; then sudo pip install Genshi; fi
     - VERBOSE=1 brew install Formula/$FORMULA.rb $BREW_OPTS
     - if [[ $FORMULA != 'omero' ]]; then brew test Formula/$FORMULA.rb; fi
