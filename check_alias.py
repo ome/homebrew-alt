@@ -2,7 +2,7 @@
 
 import difflib
 
-version = '51'
+formula_version_map = {'omero': '52', 'bioformats': '51'}
 
 
 def get_files_diff(file1, file2):
@@ -25,7 +25,7 @@ def get_expected_diff(formula, version):
             ['+ class %s < Formula\n' % uppercase_formula])
 
 
-for formula in ['omero', 'bioformats']:
+for formula, version in formula_version_map.iteritems():
     file1 = 'Formula/%s%s.rb' % (formula, version)
     file2 = 'Formula/%s.rb' % formula
     difflines = get_files_diff(file1, file2)
