@@ -19,6 +19,10 @@ class Omero < Formula
   depends_on 'nginx' => :optional
   depends_on 'cmake' if build.with? 'cpp'
 
+  # the default config expects these folders to exist
+  skip_clean "var"
+  skip_clean "etc/grid"
+
   def install
     # Create config file to specify dist.dir (see #9203)
     (Pathname.pwd/"etc/local.properties").write config_file
