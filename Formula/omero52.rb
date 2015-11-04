@@ -1,6 +1,6 @@
 require 'formula'
 
-class Omero < Formula
+class Omero52 < Formula
   homepage 'http://www.openmicroscopy.org/site/products/omero'
 
   url 'http://downloads.openmicroscopy.org/omero/5.2.0/artifacts/openmicroscopy-5.2.0.zip'
