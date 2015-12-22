@@ -2,9 +2,6 @@ language: objective-c
 matrix:
   fast_finish: true
 env:
-  - FORMULA=zeroc-ice34 BREW_OPTS=
-  - FORMULA=zeroc-ice34 BREW_OPTS=--with-python
-  - FORMULA=zeroc-ice34 BREW_OPTS=--with-java
   - FORMULA=zeroc-ice35 BREW_OPTS=--with-python
   - FORMULA=omero BREW_OPTS=--only-dependencies
 before_script:
