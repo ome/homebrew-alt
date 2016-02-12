@@ -3,8 +3,8 @@ require 'formula'
 class Bioformats < Formula
   homepage 'http://www.openmicroscopy.org/site/products/bio-formats'
 
-  url 'http://downloads.openmicroscopy.org/bio-formats/5.1.7/artifacts/bioformats-5.1.7.zip'
-  sha256 '35ade96b27629d8f33c4f5cc2738fb3a5d9fe144e13c844d8970f31b30267cbf'
+  url 'http://downloads.openmicroscopy.org/bio-formats/5.1.8/artifacts/bioformats-5.1.8.zip'
+  sha256 'db95e9fd002b710c6fbeca3ff8bb92a17e8ce4cad013eb6ed050edc390ccf98a'
 
   depends_on :python => :build
   depends_on :ant => :build
