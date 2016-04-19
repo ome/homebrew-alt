@@ -7,8 +7,8 @@ env:
 before_script:
     - brew update
     - brew tap homebrew/science
-    - brew audit Formula/*.rb
     - brew tap file:///$(pwd)
+    - brew audit Formula/*.rb
 script:
     - VERBOSE=1 brew install $FORMULA.rb $BREW_OPTS
     - if [[ $FORMULA != 'omero' ]]; then brew test Formula/$FORMULA.rb; fi
