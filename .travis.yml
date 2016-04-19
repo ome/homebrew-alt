@@ -10,5 +10,5 @@ before_script:
     - brew tap ome/alt file:///$(pwd)
     - brew audit Formula/*.rb
 script:
-    - VERBOSE=1 brew install $FORMULA.rb $BREW_OPTS
-    - if [[ $FORMULA != 'omero' ]]; then brew test Formula/$FORMULA.rb; fi
+    - VERBOSE=1 brew install $FORMULA $BREW_OPTS
+    - if [[ $FORMULA != 'omero' ]]; then brew test $FORMULA; fi
