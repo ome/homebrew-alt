@@ -6,9 +6,9 @@ env:
   - FORMULA=omero BREW_OPTS=--only-dependencies
 before_script:
     - brew update
-    - brew tap ome/alt
     - brew tap homebrew/science
     - brew audit Formula/*.rb
+    - brew tap file:///$(pwd)
 script:
-    - VERBOSE=1 brew install Formula/$FORMULA.rb $BREW_OPTS
+    - VERBOSE=1 brew install $FORMULA.rb $BREW_OPTS
     - if [[ $FORMULA != 'omero' ]]; then brew test Formula/$FORMULA.rb; fi
