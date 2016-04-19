@@ -9,7 +9,6 @@ before_script:
     - brew tap ome/alt
     - brew tap homebrew/science
     - brew audit Formula/*.rb
-    - python check_alias.py
 script:
     - VERBOSE=1 brew install Formula/$FORMULA.rb $BREW_OPTS
     - if [[ $FORMULA != 'omero' ]]; then brew test Formula/$FORMULA.rb; fi
