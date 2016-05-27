@@ -30,9 +30,7 @@ class ZerocIce35 < Formula
       # Fix build under Xcode 4.6
       # Double-underscore names are reserved, and __atomic_compare_exchange is now
       # a built-in, so rename this to something non-conflicting.
-      inreplace "src/dbinc/atomic.h" do |s|
-        s.gsub! "__atomic_compare_exchange", "__atomic_compare_exchange_db"
-      end
+      inreplace "src/dbinc/atomic.h", "__atomic_compare_exchange", "__atomic_compare_exchange_db"
 
       # BerkeleyDB dislikes parallel builds
       ENV.deparallelize
