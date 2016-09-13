@@ -26,14 +26,14 @@ class ZerocIce34 < Formula
   # Patch for Ice-3.4.2 to compile with clang
   patch :p0 do
     url "http://downloads.openmicroscopy.org/patches/ice_for_clang_2012-03-05.txt"
-    sha1 'e5be6c507bf7b0b143de46d256fe8664a880aa57'
+    sha256 'e5f3b0c0cd52d2e586e8cc8ae99912a4439f781037ca244ff351987875248bec'
   end
 
   # Patch for Ice-3.4.2 to compile under OSX Mavericks
   #See http://trac.macports.org//ticket/42459
   patch :p1 do
     url "https://github.com/ome/zeroc-ice/commit/ed8542e692.diff"
-    sha1 'b8b941bbe1d5132c77f4e32cde438fa67509ede5'
+    sha256 'e1dbf3cea334429e926c8bb36fc2f925318e7b8fff294250350455f8590b65ff'
   end if MacOS.version == :mavericks
 
   def install
