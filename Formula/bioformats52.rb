@@ -16,10 +16,11 @@ class Bioformats52 < Formula
     rm Dir["tools/*.bat"]
 
     # Copy artifacts
-    bin.install "artifacts/bioformats_package.jar"
+    libexec.install "artifacts/bioformats_package.jar"
 
     # Copy command line-tools
-    bin.install Dir["tools/*"]
+    libexec.install Dir["tools/*"]
+    bin.install_symlink libexec/"showinf"
   end
   test do
     system "showinf", "-version"
