@@ -9,7 +9,6 @@ before_script:
     - brew tap homebrew/science
     - brew tap ome/alt file://$(pwd)
     - brew audit Formula/*.rb
-    - brew audit --strict Formula/bioformats52.rb
 script:
     - VERBOSE=1 brew install $FORMULA $BREW_OPTS
     - if [[ $FORMULA != 'omero' ]]; then brew test $FORMULA; fi
