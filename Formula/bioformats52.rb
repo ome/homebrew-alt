@@ -4,8 +4,8 @@ class Bioformats52 < Formula
   url "http://downloads.openmicroscopy.org/bio-formats/5.2.2/artifacts/bioformats-5.2.2.zip"
   sha256 "fbc01f12dd3d5d08f5dcf46fec7476a30c219fcd38937720d32c2c4a6625625d"
 
-  depends_on :python => :build
-  depends_on :ant => :build
+  depends_on "python" => :build
+  depends_on "ant" => :build
 
   def install
     # Build libraries
@@ -20,9 +20,13 @@ class Bioformats52 < Formula
 
     # Copy command line-tools
     libexec.install Dir["tools/*"]
-    bin.install_symlink libexec/"showinf"
+
+    %w[bfconvert domainlist formatlist ijview mkfake omeul showinf tiffcomment xmlindent xmlvalid].each do |fn|
+      bin.install_symlink libexec/fn
+    end
   end
   test do
     system "showinf", "-version"
+    system "bfconvert", "-version"
   end
 end
