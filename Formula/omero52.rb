@@ -3,8 +3,8 @@ require 'formula'
 class Omero52 < Formula
   homepage 'http://www.openmicroscopy.org/site/products/omero'
 
-  url 'http://downloads.openmicroscopy.org/omero/5.2.6/artifacts/openmicroscopy-5.2.6.zip'
-  sha256 '3791199002e918980d59f23b9426ace6b11894f520631c0439cd98f7212d7035'
+  url 'http://downloads.openmicroscopy.org/omero/5.2.7/artifacts/openmicroscopy-5.2.7.zip'
+  sha256 'ad1b52a8337440ce5329e8dd784d51d324283aee20c609106f5aab60223c1561'
 
   option 'with-cpp', 'Build OmeroCpp libraries.'
 
