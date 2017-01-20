@@ -7,6 +7,7 @@ class Omero52 < Formula
   sha256 'ad1b52a8337440ce5329e8dd784d51d324283aee20c609106f5aab60223c1561'
 
   option 'with-cpp', 'Build OmeroCpp libraries.'
+  option 'with-ice36', 'Use Ice 3.6.'
 
   depends_on :python
   depends_on :fortran
@@ -14,7 +15,8 @@ class Omero52 < Formula
   depends_on 'pkg-config' => :build
   depends_on 'hdf5'
   depends_on 'jpeg'
-  depends_on 'zeroc-ice35' => 'with-python'
+  depends_on 'zeroc-ice35' => 'with-python' if build.without? 'ice36'
+  depends_on 'ice' if build.with? 'ice36'
   depends_on 'mplayer' => :recommended
   depends_on 'nginx' => :optional
   depends_on 'cmake' if build.with? 'cpp'
@@ -27,7 +29,9 @@ class Omero52 < Formula
     # Create config file to specify dist.dir (see #9203)
     (Pathname.pwd/"etc/local.properties").write config_file
 
-    ENV['SLICEPATH'] = "#{HOMEBREW_PREFIX}/share/Ice-3.5/slice"
+    if build.without? 'ice36'
+      ENV['SLICEPATH'] = "#{HOMEBREW_PREFIX}/share/Ice-3.5/slice"
+    end
     args = ["./build.py", "-Dice.home=#{ice_prefix}"]
     if build.with? 'cpp'
       args << 'build-all'
@@ -51,7 +55,11 @@ class Omero52 < Formula
   end
 
   def ice_prefix
-    Formula['zeroc-ice35'].opt_prefix
+    if build.without? 'ice36'
+      Formula['zeroc-ice35'].opt_prefix
+    else
+      Formula['ice'].opt_prefix
+    end
   end
 
   def caveats;
