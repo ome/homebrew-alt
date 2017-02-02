@@ -2,7 +2,7 @@ class Bioformats53 < Formula
   desc "Library for reading proprietary image file formats"
   homepage "http://www.openmicroscopy.org/site/products/bio-formats"
   url "http://downloads.openmicroscopy.org/bio-formats/5.3.3/artifacts/bioformats-5.3.3.zip"
-  sha256 "48236e427026a6c14db5a8086907481cfc94e5987e2d131607972e2d87aab381"
+  sha256 "10956a111d099c26e942e963bf2e07301a2c7345c0512e26d44eda85044619f1"
 
   depends_on "ant" => :build
 
