@@ -3,10 +3,11 @@ require 'formula'
 class Omero53 < Formula
   homepage 'http://www.openmicroscopy.org/site/products/omero'
 
-  url 'http://downloads.openmicroscopy.org/omero/5.3.0/artifacts/openmicroscopy-5.3.0-m8.zip'
+  url 'http://downloads.openmicroscopy.org/omero/5.3.0-m8/artifacts/openmicroscopy-5.3.0-m8.zip'
   sha256 '9cffaadceb9245748686774c971da7020f10dcb798ec63b28cb494f022f87fe6'
 
   option 'with-cpp', 'Build OmeroCpp libraries.'
+  option 'with-ice36', 'Use Ice 3.6.'
 
   depends_on :python
   depends_on :fortran
@@ -14,7 +15,8 @@ class Omero53 < Formula
   depends_on 'pkg-config' => :build
   depends_on 'hdf5'
   depends_on 'jpeg'
-  depends_on 'zeroc-ice35' => 'with-python'
+  depends_on 'zeroc-ice35' => 'with-python' if build.with? 'ice35'
+  depends_on 'ice' if build.without? 'ice35'
   depends_on 'mplayer' => :recommended
   depends_on 'nginx' => :optional
   depends_on 'cmake' if build.with? 'cpp'
@@ -27,7 +29,9 @@ class Omero53 < Formula
     # Create config file to specify dist.dir (see #9203)
     (Pathname.pwd/"etc/local.properties").write config_file
 
-    ENV['SLICEPATH'] = "#{HOMEBREW_PREFIX}/share/Ice-3.5/slice"
+    if build.with? 'ice35'
+      ENV['SLICEPATH'] = "#{HOMEBREW_PREFIX}/share/Ice-3.5/slice"
+    end
     args = ["./build.py", "-Dice.home=#{ice_prefix}"]
     if build.with? 'cpp'
       args << 'build-all'
@@ -51,7 +55,11 @@ class Omero53 < Formula
   end
 
   def ice_prefix
-    Formula['zeroc-ice35'].opt_prefix
+    if build.with? 'ice35'
+      Formula['zeroc-ice35'].opt_prefix
+    else
+      Formula['ice'].opt_prefix
+    end
   end
 
   def caveats;
