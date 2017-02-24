@@ -7,7 +7,7 @@ class Omero53 < Formula
   sha256 '9cffaadceb9245748686774c971da7020f10dcb798ec63b28cb494f022f87fe6'
 
   option 'with-cpp', 'Build OmeroCpp libraries.'
-  option 'with-ice36', 'Use Ice 3.6.'
+  option 'with-ice35', 'Use Ice 3.5.'
 
   depends_on :python
   depends_on :fortran
