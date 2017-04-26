@@ -5,5 +5,4 @@ before_script:
     - brew tap homebrew/science
     - brew tap ome/alt file://$(pwd)
     - brew audit Formula/*.rb
-script:
-    - VERBOSE=1 brew install omero --only-dependencies
+script: brew install omero --only-dependencies
