@@ -1,14 +1,8 @@
 language: objective-c
-matrix:
-  fast_finish: true
-env:
-  - FORMULA=zeroc-ice35 BREW_OPTS=--with-python
-  - FORMULA=omero BREW_OPTS=--only-dependencies
+env: VERBOSE=1
 before_script:
     - brew update
     - brew tap homebrew/science
     - brew tap ome/alt file://$(pwd)
     - brew audit Formula/*.rb
-script:
-    - VERBOSE=1 brew install $FORMULA $BREW_OPTS
-    - if [[ $FORMULA != 'omero' ]]; then brew test $FORMULA; fi
+script: brew install omero --only-dependencies
