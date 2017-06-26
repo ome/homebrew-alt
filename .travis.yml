@@ -4,5 +4,4 @@ before_script:
     - brew update
     - brew tap homebrew/science
     - brew tap ome/alt file://$(pwd)
-    - brew audit Formula/*.rb
 script: brew install omero --only-dependencies
