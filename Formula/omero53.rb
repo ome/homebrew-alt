@@ -3,8 +3,8 @@ require 'formula'
 class Omero53 < Formula
   homepage 'http://www.openmicroscopy.org/site/products/omero'
 
-  url 'http://downloads.openmicroscopy.org/omero/5.3.2/artifacts/openmicroscopy-5.3.2.zip'
-  sha256 'b373d3cb1fad80d9f22a06e893ccf264323a77d388ae9041fbc31a975c817d49'
+  url 'http://downloads.openmicroscopy.org/omero/5.3.3/artifacts/openmicroscopy-5.3.3.zip'
+  sha256 '15d800536a7dfacdd51b763e2a1e0e2f1db58acf6c0921b73d4203635f200c45'
 
   option 'with-cpp', 'Build OmeroCpp libraries.'
   option 'with-ice35', 'Use Ice 3.5.'
