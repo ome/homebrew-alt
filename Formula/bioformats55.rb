@@ -8,7 +8,8 @@ class Bioformats55 < Formula
 
   def install
     # Build libraries
-    args = ["ant", "clean", "tools"]
+    args = ["ant", "clean", "tools", "-Dmaven.repo.local",
+            "#{buildpath}/.m2/repository"]
     system *args
 
     # Remove Windows files
