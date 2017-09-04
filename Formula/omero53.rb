@@ -50,6 +50,7 @@ class Omero53 < Formula
 
   def config_file
     <<-EOF.undent
+      local-maven2-dir=#{buildpath}/.m2/repository
       dist.dir=#{prefix}
     EOF
   end
