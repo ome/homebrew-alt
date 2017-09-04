@@ -1,4 +1,4 @@
-class Bioformats < Formula
+class BioformatsAT56 < Formula
   desc "Library for reading proprietary image file formats"
   homepage "http://www.openmicroscopy.org/site/products/bio-formats"
   url "http://downloads.openmicroscopy.org/bio-formats/5.6.0/artifacts/bioformats-5.6.0.zip"
