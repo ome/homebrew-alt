@@ -4,5 +4,6 @@ before_script:
     - brew update
     - brew tap homebrew/core
     - brew tap ome/alt file://$(pwd)
-script: brew install bioformats
-test: brew test bioformats
+script:
+    - brew install bioformats
+    - brew test bioformats
