@@ -4,4 +4,5 @@ before_script:
     - brew update
     - brew tap homebrew/core
     - brew tap ome/alt file://$(pwd)
-script: brew install omero --only-dependencies
+script: brew install bioformats
+test: brew test bioformats
