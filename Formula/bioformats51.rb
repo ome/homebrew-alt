@@ -6,8 +6,8 @@ class Bioformats51 < Formula
   url 'http://downloads.openmicroscopy.org/bio-formats/5.1.10/artifacts/bioformats-5.1.10.zip'
   sha256 '4bae68c8e99c6df8dae699f331b1554e6be040b34e05ca47ae93bd77841b8bc2'
 
-  depends_on :python => :build
-  depends_on :ant => :build
+  depends_on "python@2" => :build
+  depends_on "ant" => :build
 
   def install
     # Build libraries
