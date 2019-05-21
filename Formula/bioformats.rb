@@ -1,6 +1,6 @@
 class Bioformats < Formula
   desc "Library for reading proprietary image file formats"
-  homepage "https://www.openmicroscopy.org/site/products/bio-formats"
+  homepage "https://www.openmicroscopy.org/bio-formats"
   url "https://downloads.openmicroscopy.org/bio-formats/6.1.0/artifacts/bioformats-6.1.0.zip"
   sha256 "e503f649bb0d15240c8e2b820cacff76c82021217c87ae5eb473b1ab5bdf0245"
 
