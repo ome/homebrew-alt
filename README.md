@@ -1,6 +1,8 @@
 # OME Homebrew Tap
 
-This repository is a [Homebrew tap](https://github.com/Homebrew/brew/blob/master/docs/brew-tap.md) which contains formulae for [OME](https://www.openmicroscopy.org/) software.
+[![Actions Status](https://github.com/ome/homebrew-alt/workflows/Build/badge.svg)](https://github.com/ome/homebrew-alt/actions)
+
+This repository is a [Homebrew tap](https://github.com/Homebrew/brew/blob/master/docs/brew-tap.md) which contains formulae for [Bio-Formats](https://www.openmicroscopy.org/bio-formats/) software.
 
 ## Install
 
