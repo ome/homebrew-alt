@@ -17,4 +17,6 @@ jobs:
           brew update
           brew tap ome/alt file://$(pwd)
       - name: Install Bio-Formats Formula
-        run: brew install bioformats
+        run: | 
+          brew install bioformats
+          brew test bioformats
